@@ -1,0 +1,15 @@
+{
+  "short_name": "Healthscribe",
+  "name": "HealthScribe helps users easily record and visualize their health and symptom triggers, so that users as well as their doctors can identify patterns and isolate potential causes for various recurring health issues.",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
