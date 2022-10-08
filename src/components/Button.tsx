@@ -13,7 +13,7 @@ const Button = ({ title, url, bg, color }: Button) => {
     <div id='Button'>
       <Link to={url}>
         <button
-          className='py-2 px-4'
+          className='py-3 px-5'
           style={{ backgroundColor: bg ? '#55565A': 'transparent', color: color === 'white'||color==true ? 'white' : 'black' }}>
           {title}
         </button>
