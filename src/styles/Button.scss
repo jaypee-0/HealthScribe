@@ -1,0 +1,12 @@
+#Button {
+    a {
+        color: unset;
+        &:hover{
+            color: unset;            
+        }
+    }
+    button {
+        border: 0;
+        border-radius: 30px;
+    }
+}
