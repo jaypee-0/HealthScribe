@@ -4,7 +4,7 @@ const UrlService = {
   
     // General Info
     Subscribe: '',
-    Message: '',
+    Contact: '',
 
     };
     
