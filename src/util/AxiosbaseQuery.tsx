@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 interface axiosquery {
-    url: String,
-    method: String, 
+    url: string,
+    method: string, 
     data: any,
-    params: String
-    baseUrl: String
+    params: string
+    baseUrl: string
 }
 
 export const axiosBaseQuery =
