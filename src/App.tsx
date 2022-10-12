@@ -5,13 +5,13 @@ import './styles/App.scss';
 function App() {
   return (
     <Router>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/signup' element={<SignUp />}></Route>
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }

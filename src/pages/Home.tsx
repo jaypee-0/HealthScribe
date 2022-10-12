@@ -1,12 +1,16 @@
 import Button from '../components/Button';
 import '../styles/Home.scss';
 import blank from '../assets/blank.jpg';
+import Navbar from '../layouts/Navbar';
+import Footer from '../layouts/Footer';
 
 const Home = () => {
   const width = screen.width
   console.log(width)
 
   return (
+    <>
+    <Navbar />
     <div id='Home'>
       <div id='Hero'>
         <div
@@ -101,6 +105,9 @@ const Home = () => {
         </div>
       </div>
     </div>
+
+    <Footer />
+    </>
   );
 };
 
