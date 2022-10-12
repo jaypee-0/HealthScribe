@@ -11,7 +11,7 @@ const Navbar = () => {
             <img src={logo} alt='logo.png' height='40' width='100' />
           </Link>
         </div>
-        <div className='d-flex gap-4 justify-content-between'>
+        <div className='d-flex gap-2 gap-md-4 justify-content-between'>
           <Button title={'Log In'} url={'/login'} bg={false} color='black' />
           <Button title={'Get Started'} url={'/signup'} bg color />
         </div>

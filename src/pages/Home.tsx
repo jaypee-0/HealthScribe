@@ -3,20 +3,18 @@ import '../styles/Home.scss';
 import blank from '../assets/blank.jpg';
 
 const Home = () => {
+  const width = screen.width
+  console.log(width)
+
   return (
     <div id='Home'>
       <div id='Hero'>
         <div
-          style={{ minHeight: '75vh' }}
+          style={{ minHeight: width >= 575 ? '80vh' : '60vh' }}
           className='position-relative py-4 container d-flex flex-column pt-5 align-items-center justify-content-center'>
           <h2>Welcome to HealthScribe</h2>
-          <p className='col-8 mt-5 text-center'>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
-            rem alias nobis eligendi delectus possimus architecto. Unde ut,
-            laborum exercitationem modi velit deleniti ipsa deserunt optio
-            excepturi reiciendis eligendi explicabo ab! Cumque, quod illo
-            eveniet iure tempora magnam sapiente voluptate, reiciendis optio
-            culpa aspernatur? Delectus quis debitis ut expedita magni.
+          <p className='col-11 mx-auto col-md-8 mt-2 mt-md-5'>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio magnam quidem maiores accusamus corporis non mollitia maxime, sapiente possimus distinctio illo autem, reprehenderit, nesciunt quasi?
           </p>
           <div className='d-flex gap-5 mt-5'>
             <Button title={'LEARN MORE'} url={'/signup'} bg color />
@@ -32,14 +30,14 @@ const Home = () => {
           possimus suscipit repellendus dolore, doloribus, voluptatem maiores
           sapiente impedit, amet ipsum sint accusantium esse placeat!
         </p>
-        <div className='d-flex justify-content-between col-md-10 mx-auto my-5'>
-          <div className='col-3'>
+        <div className='d-flex flex-column flex-md-row col-12 justify-content-between col-md-10 mx-auto my-2 my-md-5'>
+          <div className='col-9 mb-4 mb-md-0 mx-auto col-md-3'>
             <img className='img-fluid' src={blank} alt='blank.png' />
           </div>
-          <div className='col-3'>
+          <div className='col-9 mb-4 mb-md-0 mx-auto col-md-3'>
             <img className='img-fluid' src={blank} alt='blank.png' />
           </div>
-          <div className='col-3'>
+          <div className='col-9 mb-4 mb-md-0 mx-auto col-md-3'>
             <img className='img-fluid' src={blank} alt='blank.png' />
           </div>
         </div>
@@ -47,7 +45,7 @@ const Home = () => {
 
       <div id='third' style={{ backgroundColor: '#D9D9D9' }}>
         <div className='container py-5'>
-          <p className='mb-4 mt-5'>
+          <p className='mb-4 mt-0 mt-md-5'>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
             reiciendis at atque id necessitatibus quam maxime. Est possimus
             voluptatum aperiam! Natus voluptatum odio consequuntur ipsam
@@ -61,13 +59,13 @@ const Home = () => {
 
       <div id='fourth' className='py-5 container gap-5'>
         <h2 className='text-center'>Features</h2>
-        <div className='mt-5 d-flex flex-wrap justify-content-between'>
-          <div className='col-6 mb-5'>
+        <div className='mt-5 d-flex flex-column flex-md-row flex-md-wrap justify-content-between'>
+          <div className='col-12 col-md-6 mb-5 '>
             <div className='col-10 mx-auto'>
               <img src={blank} className='img-fluid' alt='' />
             </div>
           </div>
-          <div className='col-6 mb-5'>
+          <div className='col-12 col-md-6 mb-5'>
             <div className='col-10 mx-auto'>
               <h3>Log Your Health Information</h3>
               <p>
@@ -80,7 +78,7 @@ const Home = () => {
               </p>
             </div>
           </div>
-          <div className='col-5 mb-5 mt-5'>
+          <div className='col-12 col-md-5 mb-5 mt-5'>
           <div className='col-10 mx-auto'>
               <h3>Analyze Your Data</h3>
               <p>
@@ -93,7 +91,7 @@ const Home = () => {
               </p>
             </div>
           </div>
-          <div className='col-6 my-5'>
+          <div className='col-12 col-md-6 my-5'>
             <div className='col-10 mx-auto'>
               <img src={blank} className='img-fluid' alt='' />
             </div>
