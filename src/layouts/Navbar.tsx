@@ -12,8 +12,8 @@ const Navbar = () => {
           </Link>
         </div>
         <div className='d-flex gap-2 gap-md-4 justify-content-between'>
-          <Button title={'Log In'} url={'/login'} bg={false} color='black' />
-          <Button title={'Get Started'} url={'/signup'} bg color />
+          <Button title={'Log In'} url={'/login'} bg={false} border={false} color='black' />
+          <Button title={'Get Started'} url={'/signup'} bg color border={false} />
         </div>
       </div>
     </div>

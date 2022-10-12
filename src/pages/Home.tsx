@@ -21,8 +21,8 @@ const Home = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio magnam quidem maiores accusamus corporis non mollitia maxime, sapiente possimus distinctio illo autem, reprehenderit, nesciunt quasi?
           </p>
           <div className='d-flex gap-5 mt-5'>
-            <Button title={'LEARN MORE'} url={'/signup'} bg color />
-            <Button title={'VIEW FEATURES'} url={'/signup'} bg color />
+            <Button title={'LEARN MORE'} url={'/signup'} bg color border={false} />
+            <Button title={'VIEW FEATURES'} url={'/signup'} bg color border={false} />
           </div>
         </div>
       </div>
@@ -56,7 +56,7 @@ const Home = () => {
             reiciendis asperiores quae tempore perferendis!
           </p>
           <div className='text-center my-4'>
-            <Button title={'TRY NOW'} url={'/'} bg color />
+            <Button title={'TRY NOW'} url={'/'} bg color border={false} />
           </div>
         </div>
       </div>
