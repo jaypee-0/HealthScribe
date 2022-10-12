@@ -59,14 +59,14 @@ const Home = () => {
 
       <div id='fourth' className='py-5 container gap-5'>
         <h2 className='text-center'>Features</h2>
-        <div className='mt-5 d-flex flex-column flex-md-row flex-md-wrap justify-content-between'>
-          <div className='col-12 col-md-6 mb-5 '>
+        <div className='mt-5 d-flex flex-column-reverse flex-md-row flex-md-wrap justify-content-between'>
+          <div className='col-12 col-md-6 mb-2 mb-md-5 '>
             <div className='col-10 mx-auto'>
               <img src={blank} className='img-fluid' alt='' />
             </div>
           </div>
-          <div className='col-12 col-md-6 mb-5'>
-            <div className='col-10 mx-auto'>
+          <div className='col-12 col-md-6 mb-0 mb-md-5'>
+            <div className='col-11 col-md-10 mx-auto'>
               <h3>Log Your Health Information</h3>
               <p>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -78,8 +78,10 @@ const Home = () => {
               </p>
             </div>
           </div>
-          <div className='col-12 col-md-5 mb-5 mt-5'>
-          <div className='col-10 mx-auto'>
+          </div>
+        <div className='mt-5 d-flex flex-column flex-md-row flex-md-wrap justify-content-between'>
+          <div className='col-12 col-md-5 my-1 my-md-5'>
+          <div className='col-11 col-md-10 mx-auto'>
               <h3>Analyze Your Data</h3>
               <p>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -91,7 +93,7 @@ const Home = () => {
               </p>
             </div>
           </div>
-          <div className='col-12 col-md-6 my-5'>
+          <div className='col-12 col-md-6 mt-1 my-md-5'>
             <div className='col-10 mx-auto'>
               <img src={blank} className='img-fluid' alt='' />
             </div>
