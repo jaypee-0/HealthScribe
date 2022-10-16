@@ -2,8 +2,8 @@ import React from "react";
 import Navbar from "../layouts/Navbar.SignedIn";
 import logo from "../assets/blank.jpg";
 import profile from "../assets/profile.png";
-import "../styles/Profile.scss";
 import Button from "../components/Button";
+import "../styles/Profile.scss";
 
 const Profile = () => {
   
@@ -37,7 +37,7 @@ const Profile = () => {
           <input className="mb-3 py-2 py-md-3 px-2 rounded border border-1" type="date" placeholder="Birth Date" />
           <div className="d-flex justify-content-center gap-3">
             <Button title={'CANCEL'} url={'/'} bg={false} color={false} border={true} />
-            <Button title={'SAVE'} url={'/'} bg color border={false} />
+            <Button title={'SAVE'} url={'/timeline'} bg color border={false} />
           </div>
           </form>
         </div>

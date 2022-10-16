@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Navbar, Footer, Home, Login, SignUp, Profile } from './routes/routes';
+import { Navbar, Footer, Home, Login, SignUp, Profile, Timeline } from './routes/routes';
 import './styles/App.scss';
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
         <Route path='/signup' element={<SignUp />}></Route>
 
         <Route path='/profile' element={<Profile />}></Route>
+        <Route path='/timeline' element={<Timeline />}></Route>
 
         
       </Routes>
