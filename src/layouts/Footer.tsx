@@ -2,20 +2,22 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <div style={{ backgroundColor: '#9F9F9F' }} className='pb-4 pt-5 text-light'>
-      <div className='container d-flex'>
-        <div className='col-4'>
+    <div style={{ backgroundColor: '#fff' }} className='py-5 text-dark'>
+      <div className='container d-flex flex-column flex-md-row'>
+        <div className='col-12 col-md-4'>
           <ul className='list-unstyled ps-0'>
-            <li>About Us</li>
+            <li>......</li>
+          </ul>
+        </div>
+        <div className='col-12 col-md-4'>
+        <ul className='list-unstyled ps-0'>
+            <li className='mb-2'>About Us</li>
             <li>Privacy Policy</li>
           </ul>
         </div>
-        <div className='col-4'>
-          <ul className='list-unstyled ps-0'>
-            <li>Features</li>
-          </ul>
+        <div className='col-12 col-md-4'>
+          <p className='mb-0'>Copywright 2022 HealthScribe.netifly.com</p>
         </div>
-        <div className='col-4'></div>
       </div>
     </div>
   );

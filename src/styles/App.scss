@@ -1,5 +1,10 @@
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import '../styles/Variables.scss';
 
 h2, h3 {
     color: #32325D;
+}
+h6 {
+    color: $orgColor;
+    font-weight: 800;
 }

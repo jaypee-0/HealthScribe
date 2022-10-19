@@ -62,38 +62,34 @@ const Home = () => {
       </div>
 
       <div id='fourth' className='py-5 container gap-5'>
-        <h2 className='text-center'>Features</h2>
-        <div className='mt-5 d-flex flex-column-reverse flex-md-row flex-md-wrap justify-content-between'>
+        <hr className='w-75 mx-auto' />
+        <h2 className='text-center mb-5 pb-5'>How HealthScribe Works</h2>
+        <div className='mt-5 d-flex flex-column-reverse flex-md-row flex-md-wrap justify-content-between align-items-center'>
           <div className='col-12 col-md-6 mb-2 mb-md-5 '>
             <div className='col-10 mx-auto'>
               <img src={blank} className='img-fluid' alt='' />
             </div>
           </div>
           <div className='col-12 col-md-6 mb-0 mb-md-5'>
-            <div className='col-11 col-md-10 mx-auto'>
-              <h3>Log Your Health Information</h3>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Explicabo fuga sit pariatur voluptatibus, consequatur assumenda
-                voluptate, perspiciatis sed necessitatibus veritatis aspernatur
-                perferendis! Vero dicta iste deleniti excepturi neque sapiente
-                iure perferendis necessitatibus quidem laudantium recusandae
-                mollitia, voluptates illum maiores architecto.
+            <div className='col-11 col-md-10 mx-auto '>
+            <h6>Create a profile</h6>
+              <h3>Personalize the experience
+to set and achieve your
+goals</h3>
+              <p>Use your social media account to create/login
+to a HealthSCribe account
+
               </p>
             </div>
           </div>
           </div>
-        <div className='mt-5 d-flex flex-column flex-md-row flex-md-wrap justify-content-between'>
+        <div className='mt-5 d-flex flex-column flex-md-row flex-md-wrap justify-content-between align-items-center'>
           <div className='col-12 col-md-5 my-1 my-md-5'>
           <div className='col-11 col-md-10 mx-auto'>
-              <h3>Analyze Your Data</h3>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Explicabo fuga sit pariatur voluptatibus, consequatur assumenda
-                voluptate, perspiciatis sed necessitatibus veritatis aspernatur
-                perferendis! Vero dicta iste deleniti excepturi neque sapiente
-                iure perferendis necessitatibus quidem laudantium recusandae
-                mollitia, voluptates illum maiores architecto.
+          <h6>Log your events</h6>
+              <h3>Manage your health
+information in on place</h3>
+              <p>Easily record and track your symptoms, medication, mood, food, and drinks 
               </p>
             </div>
           </div>
@@ -102,6 +98,31 @@ const Home = () => {
               <img src={blank} className='img-fluid' alt='' />
             </div>
           </div>
+        </div>
+        <div className='mt-5 d-flex flex-column-reverse flex-md-row flex-md-wrap justify-content-between align-items-center'>
+          <div className='col-12 col-md-6 mb-2 mb-md-5 '>
+            <div className='col-10 mx-auto'>
+              <img src={blank} className='img-fluid' alt='' />
+            </div>
+          </div>
+          <div className='col-12 col-md-6 mb-0 mb-md-5'>
+            <div className='col-11 col-md-10 mx-auto'>
+              <h6>View your data</h6>
+              <h3>Analyze your information over time</h3>
+              <p>
+              Visually compare your information to gain 
+meaningful insights about your health 
+              </p>
+            </div>
+          </div>
+          </div>
+      </div>
+
+      <div className='bgPr' style={{paddingTop: '6rem', paddingBottom: '5rem'}}>
+        <div className='container text-center text-light'>
+          <p className='fs-3 fw-bold'>Manage your Information 24/7 from any device.</p>
+          <p className='mb-4'>Understanding your health has never been easier.</p>
+            <Button title={'Create Account'} url={'/signup'} bg color border={false} />
         </div>
       </div>
     </div>

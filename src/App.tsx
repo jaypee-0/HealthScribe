@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Navbar, Footer, Home, Login, SignUp, Profile, Timeline } from './routes/routes';
 import './styles/App.scss';
+import React from 'react'
 
 function App() {
   return (
