@@ -8,10 +8,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
     "@fortawesome/fontawesome-common-types": "^6.1.1",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@mui/material": "^5.10.10",
+    "@mui/system": "^5.10.10",
     "@reduxjs/toolkit": "^1.8.6",
     "apexcharts": "^3.36.0",
     "axios": "^0.27.2",
