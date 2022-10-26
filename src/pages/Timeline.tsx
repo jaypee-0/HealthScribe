@@ -13,7 +13,7 @@ import { FontAwesomeIcon as FA } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import Button from "../components/Button";
 
-const symptomValues = [
+const symptomValues = 
   {
     symptom: '',
     intensity: 0,
@@ -21,14 +21,14 @@ const symptomValues = [
     time: '',
     date: '',
   }
-];
+;
 
 
 const Timeline = () => {
     const [timeline, settimeline] = React.useState<Boolean>(true)
     const [analysis, setanalysis] = React.useState<Boolean>(false)
  
-    const [symptoms, setSymptoms] = useState([symptomValues]);
+    const [symptoms, setSymptoms] = useState(symptomValues);
 
   useEffect(() => {
     localStorage.setItem("symptom", JSON.stringify(symptoms));
@@ -45,7 +45,7 @@ const Timeline = () => {
 
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
       event.preventDefault();
-      setSymptoms({...symptoms, symptom: '', intensity: 0, comment: '', time: '', date: ''});
+      setSymptoms({...symptoms, symptom: '', intensity: '', comment: '', time: '', date: ''} as any);
     }
   
     function handleChangeValue(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -631,7 +631,7 @@ const Timeline = () => {
                 </div>
                     <div className="d-flex justify-content-center justify-content-md-end gap-4 mt-4 me-4">
                       <Button title={'CANCEL'} url={'/'} bg={false} color={false} border={true} />
-                      <input type="submit" value={'SAVE'} url={'/timeline'} bg color border={false} />
+                      <Button title={'SAVE'} url={'/timeline'} bg color border={'false'} />
                     </div>
                 </div>
         </form>

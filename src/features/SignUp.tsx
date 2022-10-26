@@ -43,21 +43,20 @@ function Signup() {
       if (passwordRef.current.value !== passwordConfirmationRef.current.value) {
           return setErrors(["Passwords do not match"])
       }
-  
-      
+
       const payload = {
         full_name: full_nameRef.current.value,
         email: emailRef.current.value, 
         password: passwordRef.current.value 
       }
-      const response = await dispatch(signUpUser(payload)) as any;
+      //const response = dispatch(signUpUser(payload as any));
       if (errorMessages === undefined) {
           navigate("/")
-      } else {
-        
+      } else {        
         setErrors(errorMessages);
       }
   }
+  
   const passwordInput = <OutlinedInput id="password" type={showPassword ? 'text' : 'password'} inputRef={passwordRef} endAdornment={
     <InputAdornment position="end">
       <IconButton
