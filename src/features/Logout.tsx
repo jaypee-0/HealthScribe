@@ -6,7 +6,7 @@ import { logoutUser } from '../services/Reducers';
 
 function Logout() {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<any>();
     const refreshToken = useSelector((state : RootState) => state.session.accessToken);
     
     useEffect(() => {

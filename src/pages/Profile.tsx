@@ -1,6 +1,5 @@
-import React from "react";
 import Navbar from "../layouts/Navbar.SignedIn";
-import logo from "../assets/blank.jpg";
+import Logo from "../assets/Logo.svg";
 import profile from "../assets/profile.png";
 import Button from "../components/Button";
 import "../styles/Profile.scss";
@@ -11,7 +10,7 @@ const Profile = () => {
     <div className='vh-100' style={{ backgroundColor: "#F5F5F5" }}>
       <Navbar />
       <img
-        src={logo}
+        src={Logo}
         className='w-100 d-none d-md-block'
         style={{ height: 150 }}
         alt='background.png'

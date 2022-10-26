@@ -1,7 +1,6 @@
-import React, {  useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
-import { RootState } from '../../store';
+import { RootState } from '../app/store';
 
 function PrivateRoute({children} : any) {
     const accessToken = useSelector((state : RootState) => state.session.accessToken); 

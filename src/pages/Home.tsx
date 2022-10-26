@@ -1,8 +1,9 @@
 import Button from '../components/Button';
 import '../styles/Home.scss';
-import blank from '../assets/blank.jpg';
+import Logo from '../assets/Logo.svg';
 import Navbar from '../layouts/Navbar';
 import Footer from '../layouts/Footer';
+import People from '../assets/People.svg';
 
 const Home = () => {
   const width = screen.width
@@ -12,19 +13,27 @@ const Home = () => {
     <>
     <Navbar />
     <div id='Home'>
-      <div id='Hero'>
+      <div className="welcome" id='Hero'>
         <div
           style={{ minHeight: width >= 575 ? '80vh' : '60vh' }}
           className='position-relative py-4 container d-flex flex-column pt-5 align-items-center justify-content-center'>
-          <h2>Welcome to HealthScribe</h2>
-          <p className='col-11 mx-auto col-md-8 mt-2 mt-md-5'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio magnam quidem maiores accusamus corporis non mollitia maxime, sapiente possimus distinctio illo autem, reprehenderit, nesciunt quasi?
-          </p>
-          <div className='d-flex gap-5 mt-5'>
-            <Button title={'LEARN MORE'} url={'/signup'} bg color border={false} />
-            <Button title={'VIEW FEATURES'} url={'/signup'} bg color border={false} />
+          <div>
+            <h2 className="text-white">Welcome to HealthScribe</h2>
+            <p className='para text-white col-11 mr-auto col-md-8 mt-1 mt-md-3'>
+              Keep track of your health related symptoms on all of your devices. Click learn more to see how HealthScribe works
+            </p>
+            <div className='d-flex gap-5 mt-5'>
+              <Button title={'LEARN MORE'} url={'/timeline'} bg color={true} border={false} />
+              <div className="view">
+                <Button title={'VIEW FEATURES'} url={'/signup'} bg={false} color={false} border={true} />
+              </div>
+            </div>
+          </div>
+          <div className='people'>
+            <img className='img-fluid' src={People} alt='Logo.svg' />
           </div>
         </div>
+
       </div>
 
       <div id='second' className='py-5 container text-center'>
@@ -36,13 +45,13 @@ const Home = () => {
         </p>
         <div className='d-flex flex-column flex-md-row col-12 justify-content-between col-md-10 mx-auto my-2 my-md-5'>
           <div className='col-9 mb-4 mb-md-0 mx-auto col-md-3'>
-            <img className='img-fluid' src={blank} alt='blank.png' />
+            <img className='img-fluid' src={Logo} alt='Logo.svg' />
           </div>
           <div className='col-9 mb-4 mb-md-0 mx-auto col-md-3'>
-            <img className='img-fluid' src={blank} alt='blank.png' />
+            <img className='img-fluid' src={Logo} alt='Logo.svg' />
           </div>
           <div className='col-9 mb-4 mb-md-0 mx-auto col-md-3'>
-            <img className='img-fluid' src={blank} alt='blank.png' />
+            <img className='img-fluid' src={Logo} alt='blank.svg' />
           </div>
         </div>
       </div>
@@ -67,7 +76,7 @@ const Home = () => {
         <div className='mt-5 d-flex flex-column-reverse flex-md-row flex-md-wrap justify-content-between align-items-center'>
           <div className='col-12 col-md-6 mb-2 mb-md-5 '>
             <div className='col-10 mx-auto'>
-              <img src={blank} className='img-fluid' alt='' />
+              <img src={Logo} className='img-fluid' alt='' />
             </div>
           </div>
           <div className='col-12 col-md-6 mb-0 mb-md-5'>
@@ -88,21 +97,21 @@ to a HealthSCribe account
           <div className='col-11 col-md-10 mx-auto'>
           <h6>Log your events</h6>
               <h3>Manage your health
-information in on place</h3>
+                information in one place</h3>
               <p>Easily record and track your symptoms, medication, mood, food, and drinks 
               </p>
             </div>
           </div>
           <div className='col-12 col-md-6 mt-1 my-md-5'>
             <div className='col-10 mx-auto'>
-              <img src={blank} className='img-fluid' alt='' />
+              <img src={Logo} className='img-fluid' alt='' />
             </div>
           </div>
         </div>
         <div className='mt-5 d-flex flex-column-reverse flex-md-row flex-md-wrap justify-content-between align-items-center'>
           <div className='col-12 col-md-6 mb-2 mb-md-5 '>
             <div className='col-10 mx-auto'>
-              <img src={blank} className='img-fluid' alt='' />
+              <img src={Logo} className='img-fluid' alt='' />
             </div>
           </div>
           <div className='col-12 col-md-6 mb-0 mb-md-5'>

@@ -6,7 +6,7 @@ import { refreshAccessToken } from "../services/Reducers";
 
 function PersistLogin() {
   const isLoading = useSelector((state: RootState) => state.session.loading);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<any>();
   const accessToken = useSelector((state : RootState) => state.session.accessToken);
   const refreshToken = useSelector((state : RootState) => state.session.refreshToken);
   useEffect(() => {

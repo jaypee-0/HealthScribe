@@ -5,14 +5,12 @@ import {
   loginWithEmailAndPassword,
   logoutUserWithToken,
   requestAccessTokenWithRefreshToken,
-} from "./Sessions";
+} from "./SessionsController";
 import { RootState } from "./../app/store";
 
 export interface User {
   id?: string;
-  full_name?: string;
   email?: string;
-  role?: string;
   createdAt?: string;
 }
 
@@ -35,9 +33,7 @@ interface AuthState {
 const initialState: AuthState = {
   currentUser: {
     id: undefined,
-    full_name: undefined,
     email: undefined,
-    role: undefined,
     createdAt: undefined,
   },
   loading: true,
@@ -140,7 +136,7 @@ export const currentUser = createAsyncThunk(
   }
 );
 
-export const session = createSlice({
+export const sessionReducer = createSlice({
   name: "session",
   initialState,
   reducers: {
@@ -167,7 +163,6 @@ export const session = createSlice({
         state.currentUser = {
           id: action.payload.id,
           email: action.payload.email,
-          role: action.payload.role,
           createdAt: action.payload.created_at,
         };
 
@@ -194,7 +189,6 @@ export const session = createSlice({
         state.currentUser = {
           id: action.payload.id,
           email: action.payload.email,
-          role: action.payload.role,
           createdAt: action.payload.created_at,
         };
 
@@ -220,7 +214,6 @@ export const session = createSlice({
         state.currentUser = {
           id: undefined,
           email: undefined,
-          role: undefined,
           createdAt: undefined,
         };
         state.accessToken = undefined;
@@ -250,7 +243,6 @@ export const session = createSlice({
         state.currentUser = {
           id: action.payload.id,
           email: action.payload.email,
-          role: action.payload.role,
           createdAt: action.payload.created_at,
         };
         storeRefreshToken(action.payload.refresh_token);
@@ -272,7 +264,6 @@ export const session = createSlice({
         state.currentUser = {
           id: action.payload.id,
           email: action.payload.email,
-          role: action.payload.role,
           createdAt: action.payload.created_at,
         };
         state.loading = false;
@@ -286,7 +277,7 @@ export const session = createSlice({
   },
 });
 
-export const { setLoading, resetErrorState } = session.actions;
+export const { setLoading, resetErrorState } = sessionReducer.actions;
 
 export const selectLoading = (state: RootState) => state.session?.loading;
 
@@ -295,7 +286,7 @@ export const selectErrorMessage = (state: RootState) => state.session?.error;
 export const selectCurrentUser = (state: RootState) =>
   state.session?.currentUser;
 
-export default session.reducer;
+export default sessionReducer.reducer;
 
 function storeRefreshToken(token: string) {
   localStorage.setItem("refreshToken", token);

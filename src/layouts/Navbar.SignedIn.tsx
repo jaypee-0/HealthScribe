@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../components/Button";
-import logo from "../assets/blank.jpg";
+import Logo from "../assets/Logo.svg";
 import { Link } from "react-router-dom";
 import { Spin as Hamburger } from "hamburger-react";
 import Dropdown from "../components/Dropdown";
@@ -20,7 +20,7 @@ const Navbar = () => {
       <div className='container d-flex justify-content-between position-relative align-items-center'>
         <div>
           <Link to='/'>
-            <img src={logo} alt='logo.png' height='40' width='100' />
+            <img src={Logo} alt='logo.png' height='40' width='100' />
           </Link>
         </div>
         <div className='d-flex gap-2 gap-md-4 justify-content-between' style={{zIndex: 5}}>

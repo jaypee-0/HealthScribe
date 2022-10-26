@@ -7,6 +7,7 @@ import { RootState } from '../app/store';
 import { loginUser, resetErrorState } from '../services/Reducers';
 
 function Login() {
+    // const nameRef = useRef<HTMLInputElement>();
     const emailRef = useRef<HTMLInputElement>();
     const passwordRef = useRef<HTMLInputElement>();
     const errorMessages = useSelector((state: RootState) => state.session.errorMessages);
@@ -14,15 +15,15 @@ function Login() {
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const loading = useSelector((state: RootState) => state.session.loading);
     const navigate = useNavigate();
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<any>();
 
-    useEffect(() => {
-      emailRef?.current?.focus();
-      if (errorMessages !== undefined) {
-        setErrors(errorMessages);
-        dispatch(resetErrorState());
-      }
-    }, [])
+    // useEffect(() => {
+    //   emailRef?.current?.focus();
+    //   if (errorMessages !== undefined) {
+    //     setErrors(errorMessages);
+    //     dispatch(resetErrorState());
+    //   }
+    // }, [])
 
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -34,10 +35,11 @@ function Login() {
             return setErrors(["Please fill out all fields"])
         }
         const payload = { 
+            // full_name: nameRef.current.value,
             email: emailRef.current.value, 
             password: passwordRef.current.value 
         }
-        const response = await dispatch(loginUser(payload)) as any;
+        const response = await dispatch(loginUser(payload as any ))
         console.log(response)
         if (errorMessages === undefined) {
           navigate("/")

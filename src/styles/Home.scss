@@ -1,12 +1,27 @@
 #Home {
   #Hero {
-    background-color: #fff;
-    //min-height: 75vh;
+    position: relative;
+    background-color: #008080;
+    // background: linear-gradient(#47cc76,#6AD1BE,#40B4C7);
     background-size: cover;
     background-repeat: 'no-repeat';
-    color: #32325D;
-    color: #32325D;
+    color: #32325d;
   }
+
+  .para {
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .people {
+    position: absolute;
+    right: -22.5%;
+    bottom: -1px;
+    max-width: 100%;
+  }
+
   #second {
     p {
       line-height: 2em;
@@ -15,7 +30,7 @@
   #third{
     p {
       line-height: 2.5em;
-      color: #32325D;
+      color: #32325d;
     }
   }
   

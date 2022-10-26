@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Logo from '../assets/Logo.svg';
 
 const Footer = () => {
   return (
@@ -6,7 +8,11 @@ const Footer = () => {
       <div className='container d-flex flex-column flex-md-row'>
         <div className='col-12 col-md-4'>
           <ul className='list-unstyled ps-0'>
-            <li>......</li>
+            <div>
+            <Link to='/'>
+              <img src={Logo} alt='logo.png' height='40' width='100' />
+            </Link>
+          </div>
           </ul>
         </div>
         <div className='col-12 col-md-4'>

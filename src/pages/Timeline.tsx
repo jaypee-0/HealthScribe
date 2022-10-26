@@ -1,5 +1,10 @@
-import React from "react";
-import logo from "../assets/blank.jpg";
+import React, { useEffect, useState } from "react";
+import Mood from "../assets/Mood.svg";
+import Logo from "../assets/Logo.svg";
+import Medication from "../assets/Medication.svg";
+import Symptom from "../assets/Symptom.svg";
+import Food from "../assets/Food.svg";
+import Drink from "../assets/Drink.svg";
 import AnalysisChart from "../components/AnalysisChart";
 import TimelineComponent from "../components/Timeline";
 import Navbar from "../layouts/Navbar.SignedIn";
@@ -8,10 +13,48 @@ import { FontAwesomeIcon as FA } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import Button from "../components/Button";
 
+const symptomValues = [
+  {
+    symptom: '',
+    intensity: 0,
+    comment: '',
+    time: '',
+    date: '',
+  }
+];
+
+
 const Timeline = () => {
     const [timeline, settimeline] = React.useState<Boolean>(true)
     const [analysis, setanalysis] = React.useState<Boolean>(false)
-    
+ 
+    const [symptoms, setSymptoms] = useState([symptomValues]);
+
+  useEffect(() => {
+    localStorage.setItem("symptom", JSON.stringify(symptoms));
+  }, [symptoms]);
+
+  const storesSymptoms = () => {
+    const storedValues = localStorage.getItem("symptom");
+    if(!storedValues) { return symptoms; }
+
+    return JSON.parse(storedValues);
+  }
+
+  useEffect(() => {storesSymptoms(); }, [])
+
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+      event.preventDefault();
+      setSymptoms({...symptoms, symptom: '', intensity: 0, comment: '', time: '', date: ''});
+    }
+  
+    function handleChangeValue(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+      setshowSymptom((previousValues) => ({
+        ...previousValues,
+        [event.target.name]: event.target.value,
+      }));
+    }
+
     function showTimeline () {
         settimeline(true)
         setanalysis(false)
@@ -153,7 +196,7 @@ const Timeline = () => {
     <div style={{ minHeight:"100vh", backgroundColor: "#F5F5F5" }}>
       <Navbar />
       <img
-        src={logo}
+        src={Logo}
         className='w-100 d-none d-md-block'
         style={{ height: 150 }}
         alt='background.png'
@@ -202,7 +245,7 @@ const Timeline = () => {
                 <header className="text-center py-3 w-100 bg-dark rounded px-4 text-light d-flex justify-content-between">
                 <p className="mb-0" onClick={Back}><FA icon={faArrowLeft} /></p>
                 <p className="mb-0 mx-auto d-flex">
-                    <img src="" alt="jo.jpg" className="me-2" />
+                    <img src={Food} alt="jo.jpg" className="me-2" />
                     Meal/Food
                 </p>
                 </header>
@@ -260,7 +303,7 @@ const Timeline = () => {
                 <header className="text-center py-3 w-100 bg-dark rounded px-4 text-light d-flex justify-content-between">
                 <p className="mb-0" onClick={Back}><FA icon={faArrowLeft} /></p>
                 <p className="mb-0 mx-auto d-flex">
-                    <img src="" alt="jo.jpg" className="me-2" />
+                    <img src={Drink} alt="jo.jpg" className="me-2" />
                     Drink
                 </p>
                 </header>
@@ -318,7 +361,7 @@ const Timeline = () => {
                 <header className="text-center py-3 w-100 bg-dark rounded px-4 text-light d-flex justify-content-between">
                 <p className="mb-0" onClick={Back}><FA icon={faArrowLeft} /></p>
                 <p className="mb-0 mx-auto d-flex">
-                    <img src="" alt="jo.jpg" className="me-2" />
+                    <img src={Medication} alt="jo.jpg" className="me-2" />
                     Medication
                 </p>
                 </header>
@@ -362,8 +405,8 @@ const Timeline = () => {
                     </div>
                 </div>
                     <div className="d-flex justify-content-center justify-content-md-end gap-4 mt-4 me-4">
-                        <Button title={'CANCEL'} url={'/'} bg={false} color={false} border={true} />
-                        <Button title={'SAVE'} url={'/timeline'} bg color border={false} />
+                        <Button title={'CANCEL'} url={'/'} bg={true} color="#008080" border={true} />
+                        <Button title={'SAVE'} url={'/timeline'} bg={false} color={false} border={false} />
           </div>
             </div>
         </>
@@ -376,7 +419,7 @@ const Timeline = () => {
                 <header className="text-center py-3 w-100 bg-dark rounded px-4 text-light d-flex justify-content-between">
                 <p className="mb-0" onClick={Back}><FA icon={faArrowLeft} /></p>
                 <p className="mb-0 mx-auto d-flex">
-                    <img src="" alt="jo.jpg" className="me-2" />
+                    <img src={Mood} alt="jo.jpg" className="me-2" />
                     Mood
                 </p>
                 </header>
@@ -423,12 +466,12 @@ const Timeline = () => {
 
          {/* Mood */}
          {showSymptom &&
-        <>
+        <form onSubmit={handleSubmit}>
             <div className="col-md-8 mx-auto rounded mt-5 pb-5 bg-light">
                 <header className="text-center py-3 w-100 bg-dark rounded px-4 text-light d-flex justify-content-between">
                 <p className="mb-0" onClick={Back}><FA icon={faArrowLeft} /></p>
                 <p className="mb-0 mx-auto d-flex">
-                    <img src="" alt="jo.jpg" className="me-2" />
+                    <img src={Symptom} alt="jo.jpg" className="me-2" />
                     Symptom
                 </p>
                 </header>
@@ -438,11 +481,11 @@ const Timeline = () => {
 
                         <div style={{width: '47%'}} className="d-block">
                             <label htmlFor="" className="mb-2">Date</label>
-                            <input type="date" className="w-100 rounded py-2 py-md-3 border px-2" />
+                            <input onChange={handleChangeValue} type="date" className="w-100 rounded py-2 py-md-3 border px-2" />
                         </div>
                         <div style={{width: '47%'}} className="d-block">
                             <label htmlFor="" className="mb-2">Time</label>
-                            <input type="text" className="w-100 rounded py-2 py-md-3 border px-2" />
+                            <input onChange={handleChangeValue} type="text" className="w-100 rounded py-2 py-md-3 border px-2" />
                         </div>
                         </div>
 
@@ -583,15 +626,15 @@ const Timeline = () => {
                     </div>
                     <div className="col-12 col-md-5">
                         <label htmlFor="" className="mb-2 rounded">Comments</label>
-                        <textarea name="" id="" cols={30}rows={10} className="w-100 rounded"></textarea>
+                        <textarea onChange={handleChangeValue} name="" id="" cols={30}rows={10} className="w-100 rounded"></textarea>
                     </div>
                 </div>
                     <div className="d-flex justify-content-center justify-content-md-end gap-4 mt-4 me-4">
-                        <Button title={'CANCEL'} url={'/'} bg={false} color={false} border={true} />
-                        <Button title={'SAVE'} url={'/timeline'} bg color border={false} />
-          </div>
-            </div>
-        </>
+                      <Button title={'CANCEL'} url={'/'} bg={false} color={false} border={true} />
+                      <input type="submit" value={'SAVE'} url={'/timeline'} bg color border={false} />
+                    </div>
+                </div>
+        </form>
         }
 
         {analysis && 

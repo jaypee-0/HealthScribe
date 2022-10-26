@@ -3,10 +3,10 @@ import axios from "./Axios";
 const LOGIN_URL = "/oauth/token";
 const SIGNUP_URL = "/users";
 const LOGOUT_URL = "/oauth/revoke";
-const CURRENT_USER_URL = "users/me";
+const CURRENT_USER_URL = "users";
 
-const CLIENT_ID = 'A-pWPmQOBCeXDx2GH-YRK_fxdlPhB3XYlTK2B5FAfOk';
-const CLIENT_SECRET = 'Ro6_cufDgSlB4UW2sEodncvNY7SAZV2ubhZ7Q5--Q_c';
+const CLIENT_ID = '145893185256-ri0009ijfn3i97bjqs9gakn4r1uimamh.apps.googleusercontent.com';
+const CLIENT_SECRET = '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';
 
 export async function createUserWithEmailAndPassword(
   full_name: string,
