@@ -9,33 +9,33 @@ import Profile from "./Profile";
 
 const Login = () => {
   const [user, setUser] = useState<any>({})
-  const handleCallbackResponse = (response: any) => {
-    // console.log('encoded JWT ID' + response.credential);
-    var userObj = jwt_decode(response.credential);
-    // console.log('decoded JWT ID' + userObj);
-    setUser(userObj);
-    document.getElementById('signinButton').hidden = true;
-  };
+  // const handleCallbackResponse = (response: any) => {
+  //   // console.log('encoded JWT ID' + response.credential);
+  //   var userObj = jwt_decode(response.credential);
+  //   // console.log('decoded JWT ID' + userObj);
+  //   setUser(userObj);
+  //   document.getElementById('signinButton').hidden = true;
+  // };
 
-  const handleSignOut = (e: MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault();
-    setUser({});
-    document.getElementById('signinButton').hidden = false;
-  };
+  // const handleSignOut = (e: MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  //   e.preventDefault();
+  //   setUser({});
+  //   document.getElementById('signinButton').hidden = false;
+  // };
 
-  useEffect(() => {
-    if (window.google) {
-      window.google.accounts.id.initialize({
-        client_id: '145893185256-ri0009ijfn3i97bjqs9gakn4r1uimamh.apps.googleusercontent.com',
-        callback: handleCallbackResponse,
-      })
+  // useEffect(() => {
+  //   if (window.google) {
+  //     window.google.accounts.id.initialize({
+  //       client_id: '145893185256-ri0009ijfn3i97bjqs9gakn4r1uimamh.apps.googleusercontent.com',
+  //       callback: handleCallbackResponse,
+  //     })
 
-      window.google.accounts.id.renderButton(
-        document.getElementById('signinButton'),
-        {theme: 'outline', size: 'large', type: 'standard'}
-      )
-    }
-  }, [])
+  //     window.google.accounts.id.renderButton(
+  //       document.getElementById('signinButton'),
+  //       {theme: 'outline', size: 'large', type: 'standard'}
+  //     )
+  //   }
+  // }, [])
   
   const widthsize = screen.width
   const navigate = useNavigate()
