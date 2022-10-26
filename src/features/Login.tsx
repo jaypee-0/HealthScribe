@@ -40,7 +40,6 @@ function Login() {
             password: passwordRef.current.value 
         }
         const response = await dispatch(loginUser(payload as any ))
-        console.log(response)
         if (errorMessages === undefined) {
           navigate("/")
         } else {
