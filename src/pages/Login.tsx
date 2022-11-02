@@ -1,71 +1,27 @@
-import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
-import jwt_decode from 'jwt-decode';
+import React from "react";
 import LoginNavbar from "../layouts/LoginNavbar";
-import Logo from '../assets/Logo.svg';
-import { useNavigate } from "react-router-dom";
-import Timeline from "./Timeline";
-import Profile from "./Profile";
+import google from "../assets/google.png"
+import facebook from "../assets/facebook.png"
 
 const Login = () => {
-  const [user, setUser] = useState<any>({})
-  // const handleCallbackResponse = (response: any) => {
-  //   // console.log('encoded JWT ID' + response.credential);
-  //   var userObj = jwt_decode(response.credential);
-  //   // console.log('decoded JWT ID' + userObj);
-  //   setUser(userObj);
-  //   document.getElementById('signinButton').hidden = true;
-  // };
-
-  // const handleSignOut = (e: MouseEvent<HTMLButtonElement, MouseEvent>) => {
-  //   e.preventDefault();
-  //   setUser({});
-  //   document.getElementById('signinButton').hidden = false;
-  // };
-
-  // useEffect(() => {
-  //   if (window.google) {
-  //     window.google.accounts.id.initialize({
-  //       client_id: '145893185256-ri0009ijfn3i97bjqs9gakn4r1uimamh.apps.googleusercontent.com',
-  //       callback: handleCallbackResponse,
-  //     })
-
-  //     window.google.accounts.id.renderButton(
-  //       document.getElementById('signinButton'),
-  //       {theme: 'outline', size: 'large', type: 'standard'}
-  //     )
-  //   }
-  // }, [])
-  
-  const widthsize = screen.width
-  const navigate = useNavigate()
 
   return (
     <div className="vh-100" style={{backgroundColor: "#F5F5F5"}}>
       <LoginNavbar />
-        <div
-          className='my-auto position-relative py-4 container d-flex flex-column pt-5 align-items-center justify-content-center' >
-          <Link to='/'>
-            <img src={Logo} alt='logo.png' height='60' width='150' />
-          </Link>
-          <h2 className="mt-4">Welcome to HealthScribe</h2>
-          <div className="d-flex mt-4 mb-5">
-            <input type="checkbox" />
-            <p className="mb-0 ms-2">I agree to the terms of use</p>
+      <div
+          className='py-4 container col-11 col-md-6 col-lg-4 mx-md-auto pt-5'>          
+          <div className="d-flex justify-content-center my-5">
+            <p className="mb-0">Log in to continue your journey.</p>
           </div>
-          {user && !user.email ? (
-            <div className="">
-              <div id="signinButton" className="mb-0 ms-3"></div>
-            </div>
-          ) : (
-            <div className="">
-              <Routes>
-                <Route path='/profile' element={<Profile />}></Route>
-                <Route path='/timeline' element={<Timeline />}></Route>
-              </Routes>
-            </div>
-          )
-          }
+          <button className="d-flex justify-content-center w-100 py-3 rounded border mt-4 my-auto" style={{boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'}}>
+            <img className="me-3" src={google} alt="" />
+            <p className="mb-0">Continue with Google</p>
+          </button>
+          <button className="d-flex bg-primary justify-content-center w-100 py-3 rounded border-0 mt-4 my-auto" style={{boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'}}>
+            <img className="me-3" src={facebook} alt="" />
+            <p className="mb-0 text-white">Continue with Facebook</p>
+          </button>
+          <p className="text-center text-Org mt-5">First time here?</p>
       </div>
     </div>
   );

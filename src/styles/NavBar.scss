@@ -1,3 +1,6 @@
+@import '../styles/Variables.scss';
+
+
 .get-start {
   color: white;
   border: 1px solid white;
@@ -10,7 +13,7 @@
 .login {
   color: #32325d;
   border: none;
-  font-weight: 700;
+  font-weight: 600;
   padding: 1rem 1.5rem;
   background: transparent;
 }
@@ -20,7 +23,7 @@
 }
 
 .header {
-  background-color: #008080;
+  background-color: $prim1Color;
 }
 
 .para {
