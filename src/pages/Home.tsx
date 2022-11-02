@@ -4,6 +4,10 @@ import Logo from '../assets/Logo.svg';
 import Navbar from '../layouts/Navbar';
 import Footer from '../layouts/Footer';
 import People from '../assets/People.svg';
+import iPodnCell from '../assets/iPodnCell.svg';
+import CreateProfile from '../assets/CreateProfile.svg';
+import Insights from '../assets/Insights.svg';
+import LogEventMenu from '../assets/LogEventMenu.svg';
 
 const Home = () => {
   const width = screen.width
@@ -15,68 +19,38 @@ const Home = () => {
     <div id='Home'>
       <div className="welcome" id='Hero'>
         <div
-          style={{ minHeight: width >= 575 ? '80vh' : '60vh' }}
-          className='position-relative py-4 container d-flex flex-column pt-5 align-items-center justify-content-center'>
-          <div>
-            <h2 className="text-white">Welcome to HealthScribe</h2>
-            <p className='para text-white col-11 mr-auto col-md-8 mt-1 mt-md-3'>
-              Keep track of your health related symptoms on all of your devices. Click learn more to see how HealthScribe works
+          style={{ minHeight: width >= 575 ? '75vh' : '60vh', overflowX: "hidden" }}
+          className='position-relative d-flex flex-column flex-lg-row pt-5 align-items-center justify-content-center px-4 px-md-0'>
+          <div className="fw-bold text-white col-md-11 col-lg-5 text-center mb-50 mb-md-5 ps-md-5">
+            <p className="fw-bold text-white fs-5">Health Tracker</p>
+            <h2 className="fw-bold text-white fs-1">Welcome to HealthScribe</h2>
+            <p className='para text-white mt-1 mt-md-3 col-md-10 col-lg-10 mx-md-auto fs-5'>
+              Keep track of your health related symptoms on all of your devices. Click <span className="fw-bold">Learn More</span> to see how HealthScribe works.
             </p>
-            <div className='d-flex gap-5 mt-5'>
-              <Button title={'LEARN MORE'} url={'/timeline'} bg color={true} border={false} />
+            <div className='d-flex gap-5 mt-5 justify-content-center'>
+              <Button title={'CREATE ACCOUNT'} url={'/signup'} bg color={true} border={false} />
               <div className="view">
-                <Button title={'VIEW FEATURES'} url={'/signup'} bg={false} color={false} border={true} />
+                <Button title={'LEARN MORE'} url={'/signup'} bg={false} color={false} border={true} />
               </div>
             </div>
           </div>
-          <div className='people'>
-            <img className='img-fluid' src={People} alt='Logo.svg' />
+          <div className=' col-lg-7' style={{overflowX: 'hidden'}}>
+            <img className='h-100 col-12 col-sm-0' style={{height: "max-content"}} src={People} alt='Logo.svg' />
           </div>
         </div>
 
       </div>
-
-      <div id='second' className='py-5 container text-center'>
-        <h2 className='mt-5'>Are you ready to improve your life?</h2>
-        <p className='col-sm-10 mt-4 col-md-7 mx-auto'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam ipsa
-          possimus suscipit repellendus dolore, doloribus, voluptatem maiores
-          sapiente impedit, amet ipsum sint accusantium esse placeat!
-        </p>
-        <div className='d-flex flex-column flex-md-row col-12 justify-content-between col-md-10 mx-auto my-2 my-md-5'>
-          <div className='col-9 mb-4 mb-md-0 mx-auto col-md-3'>
-            <img className='img-fluid' src={Logo} alt='Logo.svg' />
-          </div>
-          <div className='col-9 mb-4 mb-md-0 mx-auto col-md-3'>
-            <img className='img-fluid' src={Logo} alt='Logo.svg' />
-          </div>
-          <div className='col-9 mb-4 mb-md-0 mx-auto col-md-3'>
-            <img className='img-fluid' src={Logo} alt='blank.svg' />
-          </div>
-        </div>
+      <div className='container mx-auto col-md-6 position-relative'>
+        <img className='img-fluid position-absolute' src={iPodnCell} alt=""  style={{top: -50}} />
       </div>
 
-      <div id='third' style={{ backgroundColor: '#D9D9D9' }}>
-        <div className='container py-5'>
-          <p className='mb-4 mt-0 mt-md-5'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-            reiciendis at atque id necessitatibus quam maxime. Est possimus
-            voluptatum aperiam! Natus voluptatum odio consequuntur ipsam
-            reiciendis asperiores quae tempore perferendis!
-          </p>
-          <div className='text-center my-4'>
-            <Button title={'TRY NOW'} url={'/'} bg color border={false} />
-          </div>
-        </div>
-      </div>
-
-      <div id='fourth' className='py-5 container gap-5'>
+      <div id='fourth' className='py-5 container gap-5' style={{marginTop: width >= 575 ? '25rem' : '15rem'}}>
         <hr className='w-75 mx-auto' />
-        <h2 className='text-center mb-5 pb-5'>How HealthScribe Works</h2>
+        <h2 className='text-center mb-5 pb-2'>How HealthScribe Works</h2>
         <div className='mt-5 d-flex flex-column-reverse flex-md-row flex-md-wrap justify-content-between align-items-center'>
           <div className='col-12 col-md-6 mb-2 mb-md-5 '>
-            <div className='col-10 mx-auto'>
-              <img src={Logo} className='img-fluid' alt='' />
+            <div className='col-10 mx-auto text-center'>
+              <img src={CreateProfile} className='img-fluid' alt='' />
             </div>
           </div>
           <div className='col-12 col-md-6 mb-0 mb-md-5'>
@@ -85,8 +59,8 @@ const Home = () => {
               <h3>Personalize the experience
 to set and achieve your
 goals</h3>
-              <p>Use your social media account to create/login
-to a HealthSCribe account
+              <p className="mt-3 text-secondary fs-5">Use your social media account to create/login
+to a HealthScribe account
 
               </p>
             </div>
@@ -98,27 +72,27 @@ to a HealthSCribe account
           <h6>Log your events</h6>
               <h3>Manage your health
                 information in one place</h3>
-              <p>Easily record and track your symptoms, medication, mood, food, and drinks 
+              <p className="mt-3 text-secondary fs-5">Easily record and track your symptoms, medication, mood, food, and drinks 
               </p>
             </div>
           </div>
           <div className='col-12 col-md-6 mt-1 my-md-5'>
-            <div className='col-10 mx-auto'>
-              <img src={Logo} className='img-fluid' alt='' />
+            <div className='col-10 mx-auto text-center'>
+              <img src={LogEventMenu} className='img-fluid' alt='' />
             </div>
           </div>
         </div>
         <div className='mt-5 d-flex flex-column-reverse flex-md-row flex-md-wrap justify-content-between align-items-center'>
           <div className='col-12 col-md-6 mb-2 mb-md-5 '>
-            <div className='col-10 mx-auto'>
-              <img src={Logo} className='img-fluid' alt='' />
+            <div className='col-10 mx-auto text-center'>
+              <img src={Insights} className='img-fluid' alt='' />
             </div>
           </div>
           <div className='col-12 col-md-6 mb-0 mb-md-5'>
             <div className='col-11 col-md-10 mx-auto'>
               <h6>View your data</h6>
               <h3>Analyze your information over time</h3>
-              <p>
+              <p className="mt-3 text-secondary fs-5">
               Visually compare your information to gain 
 meaningful insights about your health 
               </p>
@@ -130,8 +104,8 @@ meaningful insights about your health
       <div className='bgPr' style={{paddingTop: '6rem', paddingBottom: '5rem'}}>
         <div className='container text-center text-light'>
           <p className='fs-3 fw-bold'>Manage your Information 24/7 from any device.</p>
-          <p className='mb-4'>Understanding your health has never been easier.</p>
-            <Button title={'Create Account'} url={'/signup'} bg color border={false} />
+          <p className='mb-5 '>Understanding your health has never been easier.</p>
+            <Button title={'GET STARTED'} url={'/signup'} bg color border={false} />
         </div>
       </div>
     </div>

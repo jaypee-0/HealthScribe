@@ -8,9 +8,9 @@ const Footer = () => {
       <div className='container d-flex flex-column flex-md-row'>
         <div className='col-12 col-md-4'>
           <ul className='list-unstyled ps-0'>
-            <div>
+            <div className='d-flex justify-content-center justify-content-md-start'>
             <Link to='/'>
-              <img src={Logo} alt='logo.png' height='40' width='100' />
+              <img src={Logo} alt='logo.png' height='50' width='100' />
             </Link>
           </div>
           </ul>
@@ -21,8 +21,8 @@ const Footer = () => {
             <li>Privacy Policy</li>
           </ul>
         </div>
-        <div className='col-12 col-md-4'>
-          <p className='mb-0'>Copywright 2022 HealthScribe.netifly.com</p>
+        <div className='col-12 col-md-4 d-flex flex-column flex-md-row'>
+          <p className='mb-0'>Copywright 2022</p> <p><span className='mt-3 mt-md-0 ms-md-3'>healthscribe.netifly.com</span> </p>
         </div>
       </div>
     </div>
