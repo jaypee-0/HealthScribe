@@ -1,3 +1,5 @@
+@import '../styles/Variables.scss';
+
 #Home {
   p {
     font-size: 18px;
@@ -54,6 +56,22 @@
     font-weight: 700;
     @media screen and (max-width: 768px) {
       font-size: 18px;
+    }
+  }
+}
+
+#auth {
+  #form {
+    input {
+      width: 100%;
+      border: 0;
+      border-bottom: 1px solid #000;
+      background: transparent;
+      padding: 1rem 0.5rem;
+      &:focus, :active, :target, :focus-visible{
+        border: 0;
+        border-bottom: 1px solid $prim1Color;
+      }
     }
   }
 }

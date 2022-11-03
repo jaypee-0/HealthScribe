@@ -1,20 +1,24 @@
 import Navbar from "../layouts/Navbar.SignedIn";
-import Logo from "../assets/Logo.svg";
+//import Logo from "../assets/Logo.svg";
 import profile from "../assets/profile.png";
 import Button from "../components/Button";
 import "../styles/Profile.scss";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import React from 'react';
 
 const Profile = () => {
+  const [startDate, setStartDate] = React.useState(new Date());
   
   return (
     <div className='vh-100' style={{ backgroundColor: "#F5F5F5" }}>
       <Navbar />
-      <img
+      {/* <img
         src={Logo}
         className='w-100 d-none d-md-block'
         style={{ height: 150 }}
         alt='background.png'
-      />
+      /> */}
       <div className='my-auto position-relative py-4 container d-flex flex-column flex-md-row pt-5 align-items-center align-items-md-start justify-content-center justify-content-md-around'>
       <h3 className="text-center d-md-none">Create your profile</h3>
         <div className=" col-md-3 col-lg-3">
@@ -33,7 +37,8 @@ const Profile = () => {
 
           <input className="mb-3 py-2 py-md-3 px-2 rounded border border-1" type="text" placeholder="Full Name" />
           <input className="mb-3 py-2 py-md-3 px-2 rounded border border-1" type="email" placeholder="Email" />
-          <input className="mb-3 py-2 py-md-3 px-2 rounded border border-1" type="date" placeholder="Birth Date" />
+          <DatePicker selected={startDate} onChange={(date:any) => setStartDate(date)} />
+          {/* <input className="mb-3 py-2 py-md-3 px-2 rounded border border-1" type="date" placeholder="Birth Date" /> */}
           <div className="d-flex justify-content-center gap-3">
             <Button title={'CANCEL'} url={'/'} bg={false} color={false} border={true} />
             <Button title={'SAVE'} url={'/timeline'} bg color border={false} />
