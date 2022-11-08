@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <div id="auth" className="vh-100" style={{backgroundColor: "#F5F5F5"}}>
+    <div id="auth" className="vh-100">
       <LoginNavbar />
       <div
           className='py-4 container col-11 col-md-6 col-lg-4 mx-md-auto pt-5' >
@@ -21,7 +21,7 @@ const Login = () => {
           <div className="text-center">
 
           <Link to={'/profile'}>
-          <button className="mt-4 border px-5 py-3 rounded-pill bgPr text-white" style={{boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'}}>
+          <button className="continue mt-4 border px-5 py-3 rounded-pill bgPr text-white">
             CONTINUE
           </button>
           </Link>

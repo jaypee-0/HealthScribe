@@ -38,7 +38,7 @@ const data = [{title: "Lorem Ipsum", description: "Is simply dummy text of the p
         </div>
     
     :
-    <div id="timeline" className="d-flex align-items-center justify-content-center" style={{background: 'rgba(102, 103, 107, 0.55)', minHeight: '95vh', overflowY: 'hidden'}}>
+    <div id="timelineBox" className="d-flex align-items-center justify-content-center" style={{background: 'rgba(102, 103, 107, 0.55)', minHeight: '95vh', overflowY: 'hidden'}}>
       <div className="col-md-5 col-lg-3 d-flex flex-column">
       <p className="text-light fs-3 ">Click the add button to enter an event.</p>
         <img className="ms-auto arrow" src={arrow} alt=""  />

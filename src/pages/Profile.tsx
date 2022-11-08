@@ -21,7 +21,7 @@ const Profile = () => {
   }
   
   return (
-    <div id="auth" className='vh-100' style={{ backgroundColor: "#fff" }}>
+    <div id="Profile" className='vh-100'>
       {/* <Navbar /> */}
       {/* <img
         src={Logo}

@@ -33,7 +33,7 @@ const Navbar = () => {
                 Hide()
               }
             }}
-            color='#fff'
+            color='#ddd'
           />
         </div>
         {ShowDrop && <Dropdown />}

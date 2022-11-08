@@ -1,6 +1,26 @@
 
+
 #timeline {
+   .timelinebar{
+      border-bottom: 4px solid #fff;
+      &:hover, &:target, &:active, &:focus-visible, &:focus-within, &:focus, &:visited{
+         border-bottom: 4px solid #368C9A;
+      }
+   }
+   .analysisbar{
+      border-bottom: 4px solid #fff;
+      &:hover, &:target, &:active, &:focus-visible, &:focus-within, &:focus, &:visited{
+         border-bottom: 4px solid #368C9A;
+      }
+   }
+}
+
+#timelineBox {
  .arrow {
     transform: rotate(-25deg);
+    @media screen and (max-width: 768px) {
+       transform: rotate(0deg);
+         margin-right: 30%;
+    }
  }   
 }

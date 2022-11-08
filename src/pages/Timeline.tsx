@@ -19,6 +19,7 @@ import { faArrowLeft, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { createTheme, ThemeProvider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { purple } from "@mui/material/colors";
+import '../styles/Timeline.scss';
 
 const symptomValues = 
   {
@@ -212,13 +213,13 @@ const Timeline = () => {
   }
 
   return (
-    <div style={{ minHeight:"100vh", backgroundColor: "#F5F5F5" }}>
+    <div id="timeline" style={{ minHeight:"100vh", backgroundColor: "#F5F5F5" }}>
       <Navbar />
 
         <div className="w-100" style={{background: "white"}}>
             <ul className="list-unstyled mb-0 container d-flex justify-content-around ">
-                <li onClick={showTimeline} className="fw-bold py-3" style={{cursor: "pointer", borderBottom: timeline ? '4px solid #368C9A' : 'unset'}}><img src={timelineSelected} className="img-fluid me-2 " alt="" /> My Timeline</li>
-                <li onClick={showAnalysis} className="fw-bold py-3" style={{cursor: "pointer", borderBottom: analysis ? '4px solid #368C9A' : 'unset'}}><img src={analysis ? insightsSelected : insightsUnSelected} className="img-fluid me-2 " alt="" /> View Analysis</li>
+                <li onClick={showTimeline} className="fw-bold py-3 timelinebar" style={{cursor: "pointer",}}><img src={timeline ? timelineSelected : timelineUnSelected} className="img-fluid me-2 " alt="" /> My Timeline</li>
+                <li onClick={showAnalysis} className="fw-bold py-3 analysisbar" style={{cursor: "pointer",}}><img src={analysis ? insightsSelected : insightsUnSelected} className="img-fluid me-2 " alt="" /> View Analysis</li>
             </ul>
         </div>
 

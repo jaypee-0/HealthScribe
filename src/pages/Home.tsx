@@ -18,8 +18,7 @@ const Home = () => {
     <Navbar />
     <div id='Home'>
       <div className="welcome" id='Hero'>
-        <div
-          style={{ minHeight: width >= 575 ? '75vh' : '60vh', overflowX: "hidden" }}
+        <div id="first"
           className='position-relative d-flex flex-column flex-lg-row pt-5 align-items-center justify-content-center px-4 px-md-0'>
           <div className="fw-bold text-white col-md-11 col-lg-5 text-center mb-50 mb-md-5 ps-md-5">
             <p className="fw-bold text-white fs-5">Health Tracker</p>
@@ -34,17 +33,17 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className=' col-lg-7' style={{overflowX: 'hidden'}}>
-            <img className='h-100 col-12 col-sm-0' style={{height: "max-content"}} src={People} alt='Logo.svg' />
+          <div className=' col-lg-7' id="second">
+            <img className='h-100 col-12 col-sm-0' src={People} alt='Logo.svg' />
           </div>
         </div>
 
       </div>
-      <div className='container mx-auto col-md-6 position-relative'>
-        <img className='img-fluid position-absolute' src={iPodnCell} alt=""  style={{top: -50}} />
+      <div id='iPodnCell' className='container mx-auto col-md-6'>
+        <img className='img' src={iPodnCell} alt="" />
       </div>
 
-      <div id='fourth' className='py-5 container gap-5' style={{marginTop: width >= 575 ? '25rem' : '15rem'}}>
+      <div id='fourth' className='py-5 container gap-5'>
         <hr className='w-75 mx-auto' />
         <h2 className='text-center mb-5 pb-2'>How HealthScribe Works</h2>
         <div className='mt-5 d-flex flex-column-reverse flex-md-row flex-md-wrap justify-content-between align-items-center'>
@@ -101,7 +100,7 @@ meaningful insights about your health
           </div>
       </div>
 
-      <div className='bgPr' style={{paddingTop: '6rem', paddingBottom: '5rem'}}>
+      <div id="fifth" className='bgPr'>
         <div className='container text-center text-light'>
           <p className='fs-3 fw-bold'>Manage your Information 24/7 from any device.</p>
           <p className='mb-5 '>Understanding your health has never been easier.</p>

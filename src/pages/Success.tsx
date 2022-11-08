@@ -6,7 +6,7 @@ import success from '../assets/icons/success.svg'
 const Success = () => {
   
   return (
-    <div id="auth" className='vh-100' style={{ backgroundColor: "#fff" }}>
+    <div id="Profile" className='vh-100 success'>
       {/* <Navbar /> */}
       {/* <img
         src={Logo}
@@ -19,7 +19,7 @@ const Success = () => {
       </nav>
         <div className="text-center mt-5">
           <img src={success} height={150} width={150} alt="" />
-          <p className="mt-5" style={{marginBottom: '5rem'}}>Your profile has been created.</p>
+          <p className="mt-5">Your profile has been created.</p>
           <Button title={'CONTINUE'} url={'/timeline'} bg={false} color={false} border={true} />
         </div>
     </div>
