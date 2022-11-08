@@ -1,7 +1,7 @@
 import Button from "../components/Button";
 import "../styles/Profile.scss";
 import React from 'react';
-import success from '../assets/icons/success.svg'
+import exportimg from '../assets/icons/export.svg'
 
 const MoodHistory = () => {
   
@@ -11,7 +11,7 @@ const MoodHistory = () => {
         <h3 className="text-center text-white mb-0">Mood History</h3>
       </nav>
         <div className="text-center mt-5">
-          <img src={success} height={150} width={150} alt="" />
+          <img src={exportimg} height={150} width={150} alt="" />
           <p className="" style={{marginBottom: '5rem'}}>Coming Soon!</p>
           <Button title={'CONTINUE'} url={'/timeline'} bg={false} color={false} border={true} />
         </div>

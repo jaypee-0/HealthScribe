@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Home, Login, SignUp, Profile, Timeline, Success, MoodHistory, PotentialTriggers, Export } from './routes/routes';
+import { Home, Login, SignUp, Profile, Timeline, Success, MoodHistory, PotentialTriggers, Export, Delete } from './routes/routes';
 import './styles/App.scss';
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
 
         <Route path='/success' element={<Success />}></Route>
         <Route path='/export' element={<Export />}></Route>
+        <Route path='/delete' element={<Delete />}></Route>
         <Route path='/mood-history' element={<MoodHistory />}></Route>
         <Route path='/potential-triggers' element={<PotentialTriggers />}></Route>
       </Routes>

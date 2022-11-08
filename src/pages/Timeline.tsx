@@ -4,6 +4,7 @@ import Mood from "../assets/Mood.svg";
 import Medication from "../assets/Medication.svg";
 import Symptom from "../assets/Symptom.svg";
 import Food from "../assets/Food.svg";
+import Delete from "../assets/deleteW.svg";
 import Drink from "../assets/Drink.svg";
 import AnalysisChart from "../components/AnalysisChart";
 import TimelineComponent from "../components/Timeline";
@@ -16,6 +17,9 @@ import insightsSelected from '../assets/icons/insightsSelected.svg'
 import insightsUnSelected from '../assets/icons/insightsUnSelected.svg'
 import timelineSelected from '../assets/icons/timelineSelected.svg'
 import timelineUnSelected from '../assets/icons/timelineUnSelected.svg'
+import { createTheme, ThemeProvider } from "@mui/material";
+import { purple, green } from "@mui/material/colors";
+import { useNavigate } from "react-router-dom";
 
 const symptomValues = 
   {
@@ -29,6 +33,18 @@ const symptomValues =
 
 
 const Timeline = () => {
+    const history = useNavigate()
+    const theme = createTheme({
+        palette: {
+            primary: {                
+                main: '#368C9A',
+            },
+            secondary: {                
+                main: purple[500],
+            },
+          },
+      });
+
     const [timeline, settimeline] = React.useState<Boolean>(true)
     const [analysis, setanalysis] = React.useState<Boolean>(false)
  
@@ -211,7 +227,7 @@ const Timeline = () => {
         {timeline && showSymptom === false && showMedication === false && showMood === false && showDrink === false && showMeal === false &&
             <button onClick={handleEntries} className="rounded-pill position-absolute border-0 bgPr" style={{bottom: "5%", height: 60, width: 60, right: '5%'}}><FA className="text-light" icon={showEntries ? faXmark : faPlus} /></button>}
         {timeline && timelinebox &&
-        <div className="flex-column py-5 flex-md-row align-items-center justify-content-md-around h-100">
+        <div className="flex-column flex-md-row align-items-center justify-content-md-around h-100">
             <TimelineComponent />
         </div>}
 
@@ -431,6 +447,7 @@ const Timeline = () => {
                     <img src={Mood} alt="jo.jpg" className="me-2" />
                     Mood
                 </p>
+                    <img onClick={()=> history('/delete')} src={Delete} alt="jo.jpg" className="me-2" />
                 </header>
                 <div className="px-4 pb-4 pt-4 d-flex flex-column flex-md-row justify-content-md-between">
                     <div className="col-12 col-md-6">
@@ -448,6 +465,7 @@ const Timeline = () => {
 
                         <h5 className="mt-5">Mood</h5>
                         <div className="py-3 mt-3">
+                            <ThemeProvider theme={theme}>
                         <Slider
                           aria-label="Mood"
                           defaultValue={1}
@@ -458,6 +476,7 @@ const Timeline = () => {
                           valueLabelDisplay="on"
                           marks={Moodmarks}
                         />
+                        </ThemeProvider> 
                         </div>
                     </div>
                     <div className="col-12 col-md-5">
@@ -506,7 +525,7 @@ const Timeline = () => {
                         <div className="mt-3 d-flex mb-2">
                             <p className="mb-0 col-3 col-sm-4">Stomach ache</p>
                             <div className=" col-8 d-flex align-items-center">
-                                
+                               <ThemeProvider theme={theme}>
                         <Slider
                           value={value1}
                           min={0}
@@ -517,7 +536,8 @@ const Timeline = () => {
                           valueLabelDisplay="auto"
                           aria-labelledby="Mood"
                           color="primary"
-                        />
+                          />
+                          </ThemeProvider> 
                             <p className="ms-3 mb-0 fw-bold">                         
                             {valueLabelFormat(value1)}
                             </p>
@@ -526,7 +546,7 @@ const Timeline = () => {
                         <div className="d-flex mb-2">
                             <p className="mb-0 col-3 col-sm-4">Diarrhea</p>
                             <div className=" col-8 d-flex align-items-center">
-                                
+                            <ThemeProvider theme={theme}>   
                         <Slider
                           value={value2}
                           min={0}
@@ -537,6 +557,7 @@ const Timeline = () => {
                           valueLabelDisplay="auto"
                           aria-labelledby="Mood"
                         />
+                        </ThemeProvider> 
                             <p className="ms-3 mb-0 fw-bold">                         
                             {valueLabelFormat(value2)}
                             </p>
@@ -545,7 +566,8 @@ const Timeline = () => {
                         <div className="d-flex mb-2">
                             <p className="mb-0 col-3 col-sm-4">Constipation</p>
                             <div className=" col-8 d-flex align-items-center">
-                                
+
+                            <ThemeProvider theme={theme}>
                         <Slider
                           value={value3}
                           min={0}
@@ -556,6 +578,7 @@ const Timeline = () => {
                           valueLabelDisplay="auto"
                           aria-labelledby="Mood"
                         />
+                        </ThemeProvider> 
                             <p className="ms-3 mb-0 fw-bold">                         
                             {valueLabelFormat(value3)}
                             </p>
@@ -565,6 +588,7 @@ const Timeline = () => {
                             <p className="mb-0 col-3 col-sm-4">Headache</p>
                             <div className=" col-8 d-flex align-items-center">
                                 
+                            <ThemeProvider theme={theme}>
                         <Slider
                           value={value4}
                           min={0}
@@ -575,6 +599,7 @@ const Timeline = () => {
                           valueLabelDisplay="auto"
                           aria-labelledby="Mood"
                         />
+                        </ThemeProvider> 
                             <p className="ms-3 mb-0 fw-bold">                         
                             {valueLabelFormat(value4)}
                             </p>
@@ -584,6 +609,7 @@ const Timeline = () => {
                             <p className="mb-0 col-3 col-sm-4">Nausea</p>
                             <div className=" col-8 d-flex align-items-center">
                                 
+                            <ThemeProvider theme={theme}>
                         <Slider
                           value={value5}
                           min={0}
@@ -594,6 +620,7 @@ const Timeline = () => {
                           valueLabelDisplay="auto"
                           aria-labelledby="Mood"
                         />
+                        </ThemeProvider> 
                             <p className="ms-3 mb-0 fw-bold">                         
                             {valueLabelFormat(value5)}
                             </p>
@@ -602,7 +629,8 @@ const Timeline = () => {
                         <div className="d-flex mb-2">
                             <p className="mb-0 col-3 col-sm-4">Fever</p>
                             <div className=" col-8 d-flex align-items-center">
-                                
+                               
+                            <ThemeProvider theme={theme}> 
                         <Slider
                           value={value6}
                           min={0}
@@ -613,6 +641,7 @@ const Timeline = () => {
                           valueLabelDisplay="auto"
                           aria-labelledby="Fever"
                         />
+                        </ThemeProvider> 
                             <p className="ms-3 mb-0 fw-bold">                         
                             {valueLabelFormat(value6)}
                             </p>
@@ -622,6 +651,7 @@ const Timeline = () => {
                             <p className="mb-0 col-3 col-sm-4">Vomiting</p>
                             <div className=" col-8 d-flex align-items-center">
                                 
+                            <ThemeProvider theme={theme}>
                         <Slider
                           value={value7}
                           min={0}
@@ -632,6 +662,7 @@ const Timeline = () => {
                           valueLabelDisplay="auto"
                           aria-labelledby="Vomiting"
                         />
+                        </ThemeProvider> 
                             <p className="ms-3 mb-0 fw-bold">                         
                             {valueLabelFormat(value7)}
                             </p>

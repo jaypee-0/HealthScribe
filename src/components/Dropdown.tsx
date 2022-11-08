@@ -16,7 +16,7 @@ const Dropdown = () => {
             <ul className='list-unstyled'>
                 <li className='mb-2'>My Profile</li>
                 <li className='mb-2'>App Details</li>
-                <li className='mb-2' onClick={()=> history('/')}>                   Export Data (Coming Soon)
+                <li className='mb-2' onClick={()=> history('/export')}>                   Export Data (Coming Soon)
                   </li>
                 <li className='mb-2'>Privacy & Terms</li>
             </ul>
