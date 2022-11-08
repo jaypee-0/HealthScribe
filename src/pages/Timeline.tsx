@@ -217,7 +217,7 @@ const Timeline = () => {
 
         <div className="w-100" style={{background: "white"}}>
             <ul className="list-unstyled mb-0 container d-flex justify-content-around ">
-                <li onClick={showTimeline} className="fw-bold py-3" style={{cursor: "pointer", borderBottom: timeline ? '4px solid #368C9A' : 'unset'}}><img src={timeline ? timelineSelected : ""} className="img-fluid me-2 " alt="" /> My Timeline</li>
+                <li onClick={showTimeline} className="fw-bold py-3" style={{cursor: "pointer", borderBottom: timeline ? '4px solid #368C9A' : 'unset'}}><img src={timelineSelected} className="img-fluid me-2 " alt="" /> My Timeline</li>
                 <li onClick={showAnalysis} className="fw-bold py-3" style={{cursor: "pointer", borderBottom: analysis ? '4px solid #368C9A' : 'unset'}}><img src={analysis ? insightsSelected : insightsUnSelected} className="img-fluid me-2 " alt="" /> View Analysis</li>
             </ul>
         </div>
