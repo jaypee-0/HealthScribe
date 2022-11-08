@@ -1,22 +1,22 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Navbar, Footer, Home, Login, SignUp, Profile, Timeline } from './routes/routes';
+import { Home, Login, SignUp, Profile, Timeline, Success, MoodHistory, PotentialTriggers, Export } from './routes/routes';
 import './styles/App.scss';
-import React from 'react'
-import Success from './pages/Success';
 
 function App() {
   return (
     <Router>
-      {/* <Navbar /> */}
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/signup' element={<SignUp />}></Route>
         <Route path='/profile' element={<Profile />}></Route>
-        <Route path='/success' element={<Success />}></Route>
         <Route path='/timeline' element={<Timeline />}></Route>
+
+        <Route path='/success' element={<Success />}></Route>
+        <Route path='/export' element={<Export />}></Route>
+        <Route path='/mood-history' element={<MoodHistory />}></Route>
+        <Route path='/potential-triggers' element={<PotentialTriggers />}></Route>
       </Routes>
-      {/* <Footer /> */}
     </Router>
   );
 }

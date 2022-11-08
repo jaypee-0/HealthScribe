@@ -1,6 +1,6 @@
+//import Logo from "../assets/Logo.svg";
 import React, { useEffect, useState } from "react";
 import Mood from "../assets/Mood.svg";
-import Logo from "../assets/Logo.svg";
 import Medication from "../assets/Medication.svg";
 import Symptom from "../assets/Symptom.svg";
 import Food from "../assets/Food.svg";
@@ -69,7 +69,7 @@ const Timeline = () => {
     }
     
     const medications = [{name: "Item 1"}, {name: "Item 2"}, {name: "Item 3"}]
-    const entries = [{name: "Meal/ food", img: "", url: handleMeal}, {name: "Drink", img: "", url: handleDrink}, {name: "Mood", img: "", url: handleMood}, {name: "Medication", img: "", url: handleMedication}, {name: "Symptom", img: "", url: handleSymptom}]
+    const entries = [{name: "Meal/ food", img: Food, url: handleMeal}, {name: "Drink", img: Drink, url: handleDrink}, {name: "Mood", img: Mood, url: handleMood}, {name: "Medication", img: Medication, url: handleMedication}, {name: "Symptom", img: Symptom, url: handleSymptom}]
     
     const [timelinebox, settimelinebox] = React.useState<Boolean>(true)
     const [showEntries, setshowEntries] = React.useState<Boolean>(false)
@@ -208,26 +208,26 @@ const Timeline = () => {
         </div>
 
       <div className='my-auto'>
-        {timeline && 
+        {timeline && showSymptom === false && showMedication === false && showMood === false && showDrink === false && showMeal === false &&
             <button onClick={handleEntries} className="rounded-pill position-absolute border-0 bgPr" style={{bottom: "5%", height: 60, width: 60, right: '5%'}}><FA className="text-light" icon={showEntries ? faXmark : faPlus} /></button>}
         {timeline && timelinebox &&
-        <div className="container d-flex flex-column py-5 flex-md-row align-items-center justify-content-md-around">
+        <div className="flex-column py-5 flex-md-row align-items-center justify-content-md-around h-100">
             <TimelineComponent />
         </div>}
 
         {timeline && showEntries && 
         <>
             <div className="col-md-8 mx-auto rounded mt-5 bg-light">
-                <header className="text-center py-3 w-100 bg-dark rounded text-light">Entries</header>
+                <header className="text-center py-3 w-100 bgPr rounded text-light">Log Event</header>
                 <div className="px-3 py-4">
                 {entries.map(({name, img, url}) => {
                     return (
-                        <div key={name} className="pb-3 d-flex align-items-center">
+                        <div key={name} className="py-2 d-flex align-items-center" style={{borderBottom: "1px solid #d0dffd"}}>
                             <div className="px-3">
-                                <div className="rounded-pill" style={{background: "#55565A", width: 50, height: 50}}></div>
-                                {/* <img className="rounded-pill" style={{width: 50, height: 50, backgroundColor: '#dd00ff'}} src={img} alt={".png"} /> */}
+                                {/* <div className="rounded-pill" style={{background: "#55565A", width: 50, height: 50}}></div> */}
+                                <img className="rounded-pill" style={{width: 50, height: 50,}} src={img} alt={".png"} />
                             </div>
-                            <button onClick={url} className="mb-0 border-0">{name}</button>
+                            <button onClick={url} className="mb-0 border-0 bg-transparent">{name}</button>
                         </div>
                         )
                     })}
@@ -239,9 +239,9 @@ const Timeline = () => {
         {showMeal &&
         <>
             <div className="col-md-8 mx-auto rounded mt-5 pb-5 bg-light">
-                <header className="text-center py-3 w-100 bg-dark rounded px-4 text-light d-flex justify-content-between">
+                <header className="text-center py-3 w-100 bgPr rounded px-4 text-light d-flex justify-content-between align-items-center">
                 <p className="mb-0" onClick={Back}><FA icon={faArrowLeft} /></p>
-                <p className="mb-0 mx-auto d-flex">
+                <p className="mb-0 mx-auto d-flex align-items-center justify-content-center">
                     <img src={Food} alt="jo.jpg" className="me-2" />
                     Meal/Food
                 </p>
@@ -286,8 +286,12 @@ const Timeline = () => {
                     </div>
                 </div>
                     <div className="d-flex justify-content-center justify-content-md-end gap-4 mt-4 me-4">
-                        <Button title={'CANCEL'} url={'/'} bg={false} color={false} border={true} />
-                        <Button title={'SAVE'} url={'/timeline'} bg color border={false} />
+                    <button className="mt-4 border-0 bg-transparent fw-bold px-5 py-3 rounded-pill text-Pr">
+                    CANCEL
+                    </button>
+                    <button className="mt-4 border px-5 py-3 fw-bold rounded-pill bgPr text-white">
+                    SAVE
+                    </button>
           </div>
             </div>
         </>
@@ -297,9 +301,9 @@ const Timeline = () => {
         {showDrink &&
         <>
             <div className="col-md-8 mx-auto rounded mt-5 pb-5 bg-light">
-                <header className="text-center py-3 w-100 bg-dark rounded px-4 text-light d-flex justify-content-between">
+                <header className="text-center py-3 w-100 bgPr rounded px-4 text-light d-flex justify-content-between align-items-center">
                 <p className="mb-0" onClick={Back}><FA icon={faArrowLeft} /></p>
-                <p className="mb-0 mx-auto d-flex">
+                <p className="mb-0 mx-auto d-flex align-items-center justify-content-center">
                     <img src={Drink} alt="jo.jpg" className="me-2" />
                     Drink
                 </p>
@@ -339,13 +343,17 @@ const Timeline = () => {
                         </div>
                     </div>
                     <div className="col-12 col-md-5">
-                        <label htmlFor="" className="mb-2 rounded">Comments</label>
+                        <label htmlFor="" className="mb-2 rounded">Comments (optional)</label>
                         <textarea name="" id="" cols={30}rows={10} className="w-100 rounded"></textarea>
                     </div>
                 </div>
                     <div className="d-flex justify-content-center justify-content-md-end gap-4 mt-4 me-4">
-                        <Button title={'CANCEL'} url={'/'} bg={false} color={false} border={true} />
-                        <Button title={'SAVE'} url={'/timeline'} bg color border={false} />
+                    <button className="mt-4 border-0 bg-transparent fw-bold px-5 py-3 rounded-pill text-Pr">
+                    CANCEL
+                    </button>
+                    <button className="mt-4 border px-5 py-3 fw-bold rounded-pill bgPr text-white">
+                    SAVE
+                    </button>
           </div>
             </div>
         </>
@@ -355,9 +363,9 @@ const Timeline = () => {
         {showMedication &&
         <>
             <div className="col-md-8 mx-auto rounded mt-5 pb-5 bg-light">
-                <header className="text-center py-3 w-100 bg-dark rounded px-4 text-light d-flex justify-content-between">
+                <header className="text-center py-3 w-100 bgPr rounded px-4 text-light d-flex justify-content-between align-items-center">
                 <p className="mb-0" onClick={Back}><FA icon={faArrowLeft} /></p>
-                <p className="mb-0 mx-auto d-flex">
+                <p className="mb-0 mx-auto d-flex align-items-center justify-content-center">
                     <img src={Medication} alt="jo.jpg" className="me-2" />
                     Medication
                 </p>
@@ -397,13 +405,17 @@ const Timeline = () => {
                         </div>
                     </div>
                     <div className="col-12 col-md-5">
-                        <label htmlFor="" className="mb-2 rounded">Comments</label>
+                        <label htmlFor="" className="mb-2 rounded">Comments (optional)</label>
                         <textarea name="" id="" cols={30}rows={10} className="w-100 rounded"></textarea>
                     </div>
                 </div>
                     <div className="d-flex justify-content-center justify-content-md-end gap-4 mt-4 me-4">
-                        <Button title={'CANCEL'} url={'/'} bg={true} color="#008080" border={true} />
-                        <Button title={'SAVE'} url={'/timeline'} bg={false} color={false} border={false} />
+                    <button className="mt-4 border-0 bg-transparent fw-bold px-5 py-3 rounded-pill text-Pr">
+                    CANCEL
+                    </button>
+                    <button className="mt-4 border px-5 py-3 fw-bold rounded-pill bgPr text-white">
+                    SAVE
+                    </button>
           </div>
             </div>
         </>
@@ -413,9 +425,9 @@ const Timeline = () => {
         {showMood &&
         <>
             <div className="col-md-8 mx-auto rounded mt-5 pb-5 bg-light">
-                <header className="text-center py-3 w-100 bg-dark rounded px-4 text-light d-flex justify-content-between">
+                <header className="text-center py-3 w-100 bgPr rounded px-4 text-light d-flex align-items-center  justify-content-between">
                 <p className="mb-0" onClick={Back}><FA icon={faArrowLeft} /></p>
-                <p className="mb-0 mx-auto d-flex">
+                <p className="mb-0 mx-auto d-flex align-items-center justify-content-center">
                     <img src={Mood} alt="jo.jpg" className="me-2" />
                     Mood
                 </p>
@@ -449,13 +461,17 @@ const Timeline = () => {
                         </div>
                     </div>
                     <div className="col-12 col-md-5">
-                        <label htmlFor="" className="mb-2 rounded">Comments</label>
+                        <label htmlFor="" className="mb-2 rounded">Comments (optional)</label>
                         <textarea name="" id="" cols={30}rows={10} className="w-100 rounded"></textarea>
                     </div>
                 </div>
                     <div className="d-flex justify-content-center justify-content-md-end gap-4 mt-4 me-4">
-                        <Button title={'CANCEL'} url={'/'} bg={false} color={false} border={true} />
-                        <Button title={'SAVE'} url={'/timeline'} bg color border={false} />
+                    <button className="mt-4 border-0 bg-transparent fw-bold px-5 py-3 rounded-pill text-Pr">
+                    CANCEL
+                    </button>
+                    <button className="mt-4 border px-5 py-3 fw-bold rounded-pill bgPr text-white">
+                    SAVE
+                    </button>
           </div>
             </div>
         </>
@@ -465,10 +481,10 @@ const Timeline = () => {
          {showSymptom &&
         <form onSubmit={handleSubmit}>
             <div className="col-md-8 mx-auto rounded mt-5 pb-5 bg-light">
-                <header className="text-center py-3 w-100 bg-dark rounded px-4 text-light d-flex justify-content-between">
+                <header className="text-center py-3 w-100 bgPr rounded px-4 align-items-center text-light d-flex justify-content-between">
                 <p className="mb-0" onClick={Back}><FA icon={faArrowLeft} /></p>
-                <p className="mb-0 mx-auto d-flex">
-                    <img src={Symptom} alt="jo.jpg" className="me-2" />
+                <p className="mb-0 mx-auto d-flex align-items-center justify-content-center">
+                    <img src={Symptom} alt="jo.jpg" className="me-3" />
                     Symptom
                 </p>
                 </header>
@@ -500,6 +516,7 @@ const Timeline = () => {
                           onChange={handleChange}
                           valueLabelDisplay="auto"
                           aria-labelledby="Mood"
+                          color="primary"
                         />
                             <p className="ms-3 mb-0 fw-bold">                         
                             {valueLabelFormat(value1)}
@@ -622,13 +639,17 @@ const Timeline = () => {
                         </div>
                     </div>
                     <div className="col-12 col-md-5">
-                        <label htmlFor="" className="mb-2 rounded">Comments</label>
+                        <label htmlFor="" className="mb-2 rounded">Comments (optional)</label>
                         <textarea onChange={handleChangeValue} name="" id="" cols={30}rows={10} className="w-100 rounded"></textarea>
                     </div>
                 </div>
                     <div className="d-flex justify-content-center justify-content-md-end gap-4 mt-4 me-4">
-                      <Button title={'CANCEL'} url={'/'} bg={false} color={false} border={true} />
-                      <Button title={'SAVE'} url={'/timeline'} bg color border={'false'} />
+                    <button className="mt-4 border-0 bg-transparent fw-bold px-5 py-3 rounded-pill text-Pr">
+                    CANCEL
+                    </button>
+                    <button className="mt-4 border px-5 py-3 fw-bold rounded-pill bgPr text-white">
+                    SAVE
+                    </button>
                     </div>
                 </div>
         </form>

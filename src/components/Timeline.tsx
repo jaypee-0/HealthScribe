@@ -14,8 +14,10 @@ const TimelineComponent = () => {
     subtitleColor: "#bf9765",
     textColor: "#262626",
   };
+const data = [{title: "", description: ""}]
 
   return (
+    <>
     <Timeline
       lang='en'
       theme={customTheme}
@@ -31,25 +33,8 @@ const TimelineComponent = () => {
           ]}
         />
       </Container>
-      <Container title='What is lorem Ipsum?' startDate='2022/10/02' today>
-        <Content
-          title='Lorem Ipsum'
-          description={[
-            "Is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard",
-            "Is simply dummy text of the printing and typesetting industry.", 
-          ]}
-        />
-      </Container>
-      <Container title='What is lorem Ipsum?' startDate='2022/10/02' today>
-        <Content
-          title='Lorem Ipsum'
-          description={[
-            "Is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard",
-            "Is simply dummy text of the printing and typesetting industry.", 
-          ]}
-        />
-      </Container>
     </Timeline>
+    </>
   );
 };
 
