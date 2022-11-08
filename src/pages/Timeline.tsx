@@ -10,16 +10,15 @@ import AnalysisChart from "../components/AnalysisChart";
 import TimelineComponent from "../components/Timeline";
 import Navbar from "../layouts/Navbar.SignedIn";
 import Slider from '@mui/material/Slider';
-import { FontAwesomeIcon as FA } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
-import Button from "../components/Button";
 import insightsSelected from '../assets/icons/insightsSelected.svg'
 import insightsUnSelected from '../assets/icons/insightsUnSelected.svg'
 import timelineSelected from '../assets/icons/timelineSelected.svg'
 import timelineUnSelected from '../assets/icons/timelineUnSelected.svg'
+import { FontAwesomeIcon as FA } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { createTheme, ThemeProvider } from "@mui/material";
-import { purple, green } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
+import { purple } from "@mui/material/colors";
 
 const symptomValues = 
   {
