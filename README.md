@@ -6,7 +6,7 @@
 </div>
 
 <div align="center" style="margin-top: 20px;">
-   Code designed from <a href="https://www.google.com/" target="_blank">Figma</a>.
+   Code designed from <a href="https://www.figma.com/file/TLzbwfFWddunGdHJ5T7Yvc/HealthScribe?node-id=53%3A5035" target="_blank">Figma</a>.
 </div>
 
 <div align="center" style="margin-bottom: 20px">
