@@ -7,18 +7,41 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import React from 'react';
 import { Link } from "react-router-dom";
+import { AnyARecord } from "dns";
 
 const Profile = () => {
   const [startDate, setStartDate] = React.useState(new Date());
-  const [file, setFile] = React.useState<any>();
+  // const [file, setFile] = React.useState<any>();
 
-  function handleChange(e:any) {
-      console.log(e.target.files);
-      setFile(URL.createObjectURL(e?.target?.files[0]));
+  // function handleChange(e:any) {
+  //     setFile(URL.createObjectURL(e?.target?.files[0]));
+  // }
+  // function uploadphoto() {
+  //   document.getElementById('fileupload')?.click()
+  // }
+
+  const [image, setImage] = React.useState({ preview: '', raw: '' })
+
+  const handleImgChange = (e:any) => {
+   setImage({
+    preview: URL.createObjectURL(e?.target?.files[0]),
+    raw: e?.target?.files[0]
+   })
   }
-  function uploadphoto() {
-    document.getElementById('fileupload')?.click()
-  }
+
+  const handleUpload = async (e:any) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("image", image.raw);
+
+    await fetch("YOUR_URL", {
+      method: "POST",
+      headers: {
+        "Content-Type": "multipart/form-data"
+      },
+      body: formData
+    });
+  };
   
   return (
     <div id="Profile" className='vh-100'>
@@ -36,9 +59,9 @@ const Profile = () => {
       <div className='mt-md-5 position-relative py-4 container d-flex flex-column flex-md-row pt-5 align-items-center align-items-md-start justify-content-center justify-content-md-around'>
         <div className=" col-md-3 col-lg-3">
         <div className="text-center position-relative">
-          <img className="col-7 col-md-12 mx-auto img-fluid" style={{borderRadius: '50%', maxHeight: 300, maxWidth: 300}} src={file ? file : profile} alt='profile.png' />
-          <button onClick={uploadphoto.bind(this)} className="position-absolute bg-secondary border-0 d-flex justify-content-center align-items-center fw-bold text-light me-5 me-md-0 p-md-3" style={{width: '25px', height: '25px', borderRadius: '50px', top: '80%', right:'12%'}}>+</button>
-          <input id='fileupload' style={{display: 'none '}} type="file" onChange={handleChange} accept="image/*" className='mt-2 w-auto mt-md-auto form-control align-self-start ms-auto upload py-2' />
+          <img className="col-7 col-md-12 mx-auto img-fluid" style={{borderRadius: '50%', maxHeight: 300, maxWidth: 300}} src={image.preview ? image.preview : profile} alt='profile.png' />
+          <button onClick={handleUpload} className="position-absolute bg-secondary border-0 d-flex justify-content-center align-items-center fw-bold text-light me-5 me-md-0 p-md-3" style={{width: '25px', height: '25px', borderRadius: '50px', top: '80%', right:'12%'}}>+</button>
+          <input id='fileupload' style={{display: 'none '}} type="file" onChange={handleImgChange} accept="image/*" className='mt-2 w-auto mt-md-auto form-control align-self-start ms-auto upload py-2' />
         </div>
         <div>
           <p className="d-none text-center d-md-block mt-4 fs-5">User Name</p>

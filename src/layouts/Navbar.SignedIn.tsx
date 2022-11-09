@@ -19,9 +19,6 @@ const Navbar = () => {
     <div className='w-100 py-3 bgPr'>
       <div className='container d-flex justify-content-between position-relative align-items-center'>
         <div>
-          {/* <Link to='/'>
-            <img src={Logo} alt='logo.png' height='40' width='100' />
-          </Link> */}
         </div>
         <div className='d-flex gap-2 gap-md-4 justify-content-between' style={{zIndex: 5}}>
           <Hamburger
