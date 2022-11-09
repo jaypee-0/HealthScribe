@@ -13,7 +13,7 @@ import Slider from '@mui/material/Slider';
 import insightsSelected from '../assets/icons/insightsSelected.svg'
 import insightsUnSelected from '../assets/icons/insightsUnSelected.svg'
 import timelineSelected from '../assets/icons/timelineSelected.svg'
-import timelineUnSelected from '../assets/icons/timelineUnSelected.svg'
+import timelineUnSelected from '../assets/icons/timelinenotselected.svg'
 import { FontAwesomeIcon as FA } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { createTheme, ThemeProvider } from "@mui/material";
