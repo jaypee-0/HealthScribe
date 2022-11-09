@@ -81,6 +81,11 @@ const Timeline = () => {
     }
     function showAnalysis () {
         settimeline(false)
+        setshowSymptom(false)
+        setshowMeal(false)
+        setshowMood(false)
+        setshowMedication(false)
+        setshowDrink(false)
         setanalysis(true)
     }
     
