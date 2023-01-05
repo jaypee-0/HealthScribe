@@ -11,7 +11,6 @@ import LogEventMenu from '../assets/LogEventMenu.svg';
 
 const Home = () => {
   const width = screen.width
-  console.log(width)
 
   return (
     <>
