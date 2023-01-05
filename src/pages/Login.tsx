@@ -1,7 +1,7 @@
 import React from "react";
 import LoginNavbar from "../layouts/LoginNavbar";
-//import google from "../assets/google.png"
-//import facebook from "../assets/facebook.png"
+import google from "../assets/google.png"
+import facebook from "../assets/facebook.png"
 import email from "../assets/icons/email.svg"
 import { Link } from "react-router-dom";
 
@@ -26,14 +26,14 @@ const Login = () => {
           </button>
           </Link>
           </div>
-          {/* <button className="d-flex justify-content-center w-100 py-3 rounded border mt-4 my-auto" style={{boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'}}>
+          <button className="d-flex justify-content-center w-100 py-3 rounded border mt-4 my-auto" style={{boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'}}>
             <img className="me-3" src={google} alt="" />
             <p className="mb-0">Continue with Google</p>
           </button>
           <button className="d-flex bg-primary justify-content-center w-100 py-3 rounded border-0 mt-4 my-auto" style={{boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'}}>
             <img className="me-3" src={facebook} alt="" />
             <p className="mb-0 text-white">Continue with Facebook</p>
-          </button> */}
+          </button>
           <p className="text-center text-Org mt-5">First time here?</p>
       </div>
     </div>
