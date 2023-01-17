@@ -5,12 +5,13 @@ import { useuserAuth } from '../context/UserAuth';
 
 const Dropdown = () => {
   const history = useNavigate()
-  const { signOut, user }:any = useuserAuth();
+  const { signOut, user, setuser }:any = useuserAuth();
 
   const handleSignOut = async (e:React.SyntheticEvent) => {
     e.preventDefault();
     try {
       await signOut
+      setuser(null)
       history('/login')
     } catch (err:any) {
       console.log(err)

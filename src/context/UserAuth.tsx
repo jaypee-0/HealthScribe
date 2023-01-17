@@ -5,13 +5,14 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, on
 const UserAuth = createContext<any>("");
 
 export function UserAuthProvider({ children }:any) {
+    const [user, setuser] = React.useState<any>()
+    
     function signUp(email:string, password:string) {
         return createUserWithEmailAndPassword(auth, email, password)
     }
     function logIn(email:string, password:string) {
         return signInWithEmailAndPassword(auth, email, password)
     }
-    const [user, setuser] = React.useState<any>()
     React.useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser:any) => {
             setuser(currentUser)
