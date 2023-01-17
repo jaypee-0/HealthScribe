@@ -4,8 +4,11 @@ import Logo from "../assets/Logo.svg";
 import { Link } from "react-router-dom";
 import { Spin as Hamburger } from "hamburger-react";
 import Dropdown from "../components/Dropdown";
+import { useuserAuth } from "../context/UserAuth";
 
 const Navbar = () => {
+  
+  const { user }: any = useuserAuth();
   const [ShowDrop, setShowDrop] = React.useState<Boolean>(false)
 
   function Show () {

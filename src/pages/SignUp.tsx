@@ -9,9 +9,11 @@ import email from '../assets/icons/email.svg';
 import { Link } from 'react-router-dom';
 import { useuserAuth } from '../context/UserAuth';
 import { useNavigate } from 'react-router-dom';
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { auth } from '../components/Firebase';
 
 const SignUp = () => {
-  const { signUp }:any = useuserAuth();
+  const { signUp, setuser }:any = useuserAuth();
   const navigate = useNavigate();
 
   const [email, setemail] = React.useState("")
@@ -27,15 +29,30 @@ const SignUp = () => {
       navigate('/login')
     } catch (err:any) {
       console.log(err)
-      console.log("error")
       seterror(err?.message)
     }
   }
  
+  
+  const [signInWithGoogle, user, loading] = useSignInWithGoogle(auth);  
+  const googleSignin = () => {
+    signInWithGoogle([''], { prompt: 'select_account' })
+      .then((res:any) => {
+        console.log(res);
+        navigate('/profile');
+        setuser(res.user)
+      })
+      .catch((err) => {
+        console.log(err);
+        seterror(err?.message);
+      });
+  };
+
   return (
     <div id='auth' className='vh-100'>
       <SignUpNavbar />
-      <form onSubmit={handleSubmit} className='py-4 container col-11 col-md-6 col-lg-4 mx-md-auto pt-5'>
+      <div className='py-4 container col-11 col-md-6 col-lg-4 mx-md-auto pt-5'>
+        <form onSubmit={handleSubmit} >
         <p className='text-center mt-5'>Sign up with your email.</p>
         <div className='d-flex justify-content-center mb-3'>
           <input type='checkbox' />
@@ -60,22 +77,24 @@ const SignUp = () => {
               CONTINUE
             </button>
         </div>
+        </form>
         {/* Google */}
         <button
+          onClick={googleSignin}
           className='d-flex justify-content-center w-100 py-3 rounded border mt-4 my-auto'
           style={{ boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)' }}>
           <img className='me-3' src={google} alt='' />
           <p className='mb-0'>Continue with Google</p>
         </button>
         {/* Facebook */}
-        <button
+        {/* <button
           className='d-flex bg-primary justify-content-center w-100 py-3 rounded border-0 mt-4 my-auto'
           style={{ boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)' }}>
           <img className='me-3' src={facebook} alt='' />
           <p className='mb-0 text-white'>Continue with Facebook</p>
-        </button>
+        </button> */}
         <p className='text-center text-Org mt-5'>Already have an account?</p>
-      </form>
+      </div>
     </div>
   );
 };

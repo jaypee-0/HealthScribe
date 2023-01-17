@@ -13,6 +13,7 @@ import {
 } from './routes/routes';
 import './styles/App.scss';
 import { UserAuthProvider } from './context/UserAuth';
+import ProtectRoute from './components/ProtectRoute';
 
 function App() {
   return (
@@ -20,19 +21,20 @@ function App() {
       <UserAuthProvider>
         <Router>
           <Routes>
-            <Route path='/' element={<Home />}></Route>
-            <Route path='/login' element={<Login />}></Route>
-            <Route path='/signup' element={<SignUp />}></Route>
-            <Route path='/profile' element={<Profile />}></Route>
-            <Route path='/timeline' element={<Timeline />}></Route>
+            <Route path='/' element={<Home />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/signup' element={<SignUp />} />
+          
+            <Route element={<ProtectRoute />}>
+              <Route path='/profile' element={<Profile />} />
+              <Route path='/timeline' element={<Timeline />} />
+              <Route path='/success' element={<Success />} />
+              <Route path='/export' element={<Export />} />
+              <Route path='/delete' element={<Delete />} />
+              <Route path='/mood-history' element={<MoodHistory />} />
+              <Route path='/potential-triggers' element={<PotentialTriggers />} />
+            </Route>    
 
-            <Route path='/success' element={<Success />}></Route>
-            <Route path='/export' element={<Export />}></Route>
-            <Route path='/delete' element={<Delete />}></Route>
-            <Route path='/mood-history' element={<MoodHistory />}></Route>
-            <Route
-              path='/potential-triggers'
-              element={<PotentialTriggers />}></Route>
           </Routes>
         </Router>
       </UserAuthProvider>
