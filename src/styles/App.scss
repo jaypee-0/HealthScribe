@@ -8,3 +8,20 @@ h6 {
     color: $orgColor;
     font-weight: 800;
 }
+.buttonSignOut{
+    background-color: #00000000;
+    &:hover{
+        background-color: #000000;
+        color: white;
+    }
+}
+
+.dropdeets{
+    li {
+        padding: 0.5rem 1rem;
+        &:hover{
+            background-color: #368C9A40;
+            cursor: pointer;
+        }
+    }
+}

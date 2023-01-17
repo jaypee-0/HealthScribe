@@ -6,7 +6,7 @@ import email from '../assets/icons/email.svg';
 import { Link } from 'react-router-dom';
 import { useuserAuth } from '../context/UserAuth';
 import { useNavigate } from 'react-router-dom';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithGoogle, useSignInWithFacebook } from 'react-firebase-hooks/auth';
 import { auth } from '../components/Firebase';
 
 const Login = () => {
@@ -33,6 +33,20 @@ const Login = () => {
 
   const googleSignin = () => {
     signInWithGoogle([''], { prompt: 'select_account' })
+      .then((res:any) => {
+        console.log(res);
+        navigate('/profile');
+        setuser(res.user)
+      })
+      .catch((err) => {
+        console.log(err);
+        seterror(err?.message);
+      });
+  };
+
+  const [signInWithFacebook] = useSignInWithFacebook(auth);
+  const facebookSignin = () => {
+    signInWithFacebook([""], { prompt: 'select_account' })
       .then((res:any) => {
         console.log(res);
         navigate('/profile');
@@ -99,13 +113,14 @@ const Login = () => {
           <p className='mb-0'>Continue with Google</p>
         </button>
         {/* Facebook */}
-        <button
+        <button 
+          onClick={facebookSignin}
           className='d-flex bg-primary justify-content-center w-100 py-3 rounded border-0 mt-4 my-auto'
           style={{ boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)' }}>
           <img className='me-3' src={facebook} alt='' />
           <p className='mb-0 text-white'>Continue with Facebook</p>
         </button>
-        <p className='text-center text-Org mt-5'>First time here?</p>
+        {/* <p className='text-center text-Org mt-5'>First time here?</p> */}
       </div>
     </div>
   );
