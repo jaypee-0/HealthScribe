@@ -26,7 +26,6 @@ const SignUp = () => {
     seterror("")
       await signUp(email, password)
       .then(async (user: any) => {
-        console.log(user);
         if (user) {
             const token = await user.user.getIdToken();
             navigate('/login')
@@ -34,7 +33,6 @@ const SignUp = () => {
         //addDoc(usersRef, { uid: user.user.uid, email, fullname: nameInd, role });
     })
     .catch((error:any) => {
-        console.log(error.code);
         if (error.code === "auth/email-already-in-use") {
             setEmailExists(true);
             return;

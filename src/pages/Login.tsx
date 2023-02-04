@@ -24,7 +24,14 @@ const Login = () => {
     seterror('');
     try {
       await logIn(email, password)
-      navigate('/profile');
+        .then(async (user: any) => {
+          console.log(user)
+          if (user) {
+            const token = await user.user.getIdToken();
+            setuser(user.user)
+            navigate('/profile')
+        }
+      })
     } catch (err: any) {
       if (err.code === "auth/invalid-email") {
         seterror("Invalid Email");
