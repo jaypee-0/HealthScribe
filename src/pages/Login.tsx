@@ -23,11 +23,14 @@ const Login = () => {
     e.preventDefault();
     seterror('');
     try {
-      await logIn(email, password);
+      await logIn(email, password)
       navigate('/profile');
     } catch (err: any) {
-      console.log(err);
-      seterror(err?.message);
+      if (err.code === "auth/invalid-email") {
+        seterror("Invalid Email");
+        return;
+      }
+      seterror("Invalid Password");
     }
   };
 
@@ -38,9 +41,12 @@ const Login = () => {
         navigate('/profile');
         setuser(res.user)
       })
-      .catch((err) => {
-        console.log(err);
-        seterror(err?.message);
+      .catch((err:any) => {
+        if (err.code === "auth/invalid-email") {
+          seterror("Invalid Email");
+          return;
+        }
+        seterror("Invalid Password");
       });
   };
 

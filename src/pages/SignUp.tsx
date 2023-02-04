@@ -19,18 +19,28 @@ const SignUp = () => {
   const [email, setemail] = React.useState("")
   const [password, setpassword] = React.useState("")
   const [error, seterror] = React.useState("")
+  const [emailExists, setEmailExists] = React.useState(false);
 
   const handleSubmit = async (e:React.SyntheticEvent) => {
     e.preventDefault();
     seterror("")
-    try {
       await signUp(email, password)
-      console.log(email, password)
-      navigate('/login')
-    } catch (err:any) {
-      console.log(err)
-      seterror(err?.message)
-    }
+      .then(async (user: any) => {
+        console.log(user);
+        if (user) {
+            const token = await user.user.getIdToken();
+            navigate('/login')
+        }
+        //addDoc(usersRef, { uid: user.user.uid, email, fullname: nameInd, role });
+    })
+    .catch((error:any) => {
+        console.log(error.code);
+        if (error.code === "auth/email-already-in-use") {
+            setEmailExists(true);
+            return;
+        }
+        seterror(error);
+    });
   }
  
   
@@ -61,8 +71,8 @@ const SignUp = () => {
             <span className='text-decoration-underline'>Terms of Use.</span>
           </p>
         </div>
-        {error &&
-        <div><p className='m-0 text-center text-danger py-2 rounded' style={{background: '#FFB6C1'}}>{error}</p></div>
+        {emailExists &&
+        <div><p className='m-0 text-center text-danger py-2 rounded' style={{background: '#FFB6C1'}}>{"Email already in use"}</p></div>
         }
         <div id='form' className='d-flex justify-content-center'>
           <img src={email} alt='' />
