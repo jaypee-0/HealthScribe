@@ -2,17 +2,21 @@ import React from 'react'
 import logo from "../assets/blank.jpg";
 import { useNavigate } from 'react-router-dom';
 import { useuserAuth } from '../context/UserAuth';
+import { auth } from './Firebase';
 
 const Dropdown = () => {
   const history = useNavigate()
-  const { signOut, user, setuser }:any = useuserAuth();
+  const { user, setuser, signOut }:any = useuserAuth();
 
-  const handleSignOut = async (e:React.SyntheticEvent) => {
-    e.preventDefault();
+  const handleSignOut = async () => {
     try {
-      await signOut
-      setuser(null)
-      history('/login')
+      await signOut(auth)
+      .then(() => {
+          setuser(null)
+          localStorage.removeItem("HealthScribe_Token")
+          console.log("sign out successful");
+          history('/login')
+      })
     } catch (err:any) {
       console.log(err)
     }
@@ -27,9 +31,10 @@ const Dropdown = () => {
         <hr />
         <div className=''>
             <ul className='list-unstyled dropdeets'>
-                <li className=''>My Profile</li>
+                <li className='' onClick={()=> history('/profile')}>My Profile</li>
                 <li className=''>App Details</li>
-                <li className='' onClick={()=> history('/export')}>                   Export Data (Coming Soon)
+                <li className='' onClick={()=> history('/export')}>                   
+                Export Data (Coming Soon)
                   </li>
                 <li className=''>Privacy & Terms</li>
             </ul>

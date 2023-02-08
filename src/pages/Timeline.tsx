@@ -19,6 +19,7 @@ import { faArrowLeft, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { createTheme, ThemeProvider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { purple } from "@mui/material/colors";
+import { useuserAuth } from "../context/UserAuth";
 import '../styles/Timeline.scss';
 
 const symptomValues = 
@@ -31,8 +32,10 @@ const symptomValues =
   }
 ;
 
-
 const Timeline = () => {
+  const { symptoms, causes }: any = useuserAuth();
+    console.log(causes)
+
     const history = useNavigate()
     const theme = createTheme({
         palette: {
@@ -48,24 +51,24 @@ const Timeline = () => {
     const [timeline, settimeline] = React.useState<Boolean>(true)
     const [analysis, setanalysis] = React.useState<Boolean>(false)
  
-    const [symptoms, setSymptoms] = useState(symptomValues);
+    const [symptomState, setsymptomState] = useState(symptomValues);
 
   useEffect(() => {
-    localStorage.setItem("symptom", JSON.stringify(symptoms));
-  }, [symptoms]);
+    localStorage.setItem("symptom", JSON.stringify(symptomState));
+  }, [symptomState]);
 
-  const storesSymptoms = () => {
+  const storessymptomState = () => {
     const storedValues = localStorage.getItem("symptom");
-    if(!storedValues) { return symptoms; }
+    if(!storedValues) { return symptomState; }
 
     return JSON.parse(storedValues);
   }
 
-  useEffect(() => {storesSymptoms(); }, [])
+  useEffect(() => {storessymptomState(); }, [])
 
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
       event.preventDefault();
-      setSymptoms({...symptoms, symptom: '', intensity: '', comment: '', time: '', date: ''} as any);
+      setsymptomState({...symptomState, symptom: '', intensity: '', comment: '', time: '', date: ''} as any);
     }
   
     function handleChangeValue(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {

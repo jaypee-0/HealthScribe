@@ -1,7 +1,9 @@
+import firebase from "firebase/app";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
-import firebase from "firebase/app";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBRJDtBs9BseWsi8hq77tOYXMmU1HlaKDk",
@@ -15,8 +17,16 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
-const analytics = getAnalytics(app);
 
+// Initialize Services
+export const analytics = getAnalytics(app);
 export const auth = getAuth(app)
-export default app
+export const db = getFirestore();
+export const storage = getStorage(app);
 
+// Collection Ref
+export const symRef = collection(db, 'symptoms')
+export const causesRef = collection(db, 'causes')
+
+
+// Get Collection Data

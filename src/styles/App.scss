@@ -25,3 +25,9 @@ h6 {
         }
     }
 }
+
+.hover_down {
+    &:hover{
+        opacity: 0.6;
+    }
+}

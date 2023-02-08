@@ -6,11 +6,14 @@ import email from '../assets/icons/email.svg';
 import { Link } from 'react-router-dom';
 import { useuserAuth } from '../context/UserAuth';
 import { useNavigate } from 'react-router-dom';
-import { useSignInWithGoogle, useSignInWithFacebook } from 'react-firebase-hooks/auth';
+import {
+  useSignInWithGoogle,
+  useSignInWithFacebook,
+} from 'react-firebase-hooks/auth';
 import { auth } from '../components/Firebase';
 
 const Login = () => {
-  const { logIn, setuser }: any = useuserAuth();
+  const { logIn, setuser, setuserDetails }: any = useuserAuth();
   const navigate = useNavigate();
 
   const [email, setemail] = React.useState('');
@@ -23,47 +26,51 @@ const Login = () => {
     e.preventDefault();
     seterror('');
     try {
-      await logIn(email, password)
-        .then(async (user: any) => {
-          console.log(user)
-          if (user) {
-            const token = await user.user.getIdToken();
-            setuser(user.user)
-            navigate('/profile')
+      await logIn(email, password).then(async (user: any) => {
+        console.log(user);
+        if (user) {
+          const token = await user.user.getIdToken();
+          setuserDetails({id: user.user.uid})
+          localStorage.setItem("HealthScribe_Token", token)
+          setuser(user.user);
+          navigate('/profile');
         }
-      })
+      });
     } catch (err: any) {
-      if (err.code === "auth/invalid-email") {
-        seterror("Invalid Email");
+      if (err.code === 'auth/invalid-email') {
+        seterror('Invalid Email');
         return;
       }
-      seterror("Invalid Password");
+      seterror('Invalid Password');
     }
   };
 
   const googleSignin = () => {
     signInWithGoogle([''], { prompt: 'select_account' })
-      .then((res:any) => {
-        console.log(res);
+      .then((user: any) => {
+        const token = user.user.getIdToken();
+        setuserDetails({id: user.user.uid})
+        localStorage.setItem("HealthScribe_Token", token)
+        setuserDetails({id: user.user.uid})
         navigate('/profile');
-        setuser(res.user)
+        setuser(user.user);
       })
-      .catch((err:any) => {
-        if (err.code === "auth/invalid-email") {
-          seterror("Invalid Email");
+      .catch((err: any) => {
+        if (err.code === 'auth/invalid-email') {
+          seterror('Invalid Email');
           return;
         }
-        seterror("Invalid Password");
+        seterror('Invalid Password');
       });
   };
 
   const [signInWithFacebook] = useSignInWithFacebook(auth);
   const facebookSignin = () => {
-    signInWithFacebook([""], { prompt: 'select_account' })
-      .then((res:any) => {
+    signInWithFacebook([''], { prompt: 'select_account' })
+      .then((res: any) => {
         console.log(res);
         navigate('/profile');
-        setuser(res.user)
+        setuser(res.user);
       })
       .catch((err) => {
         console.log(err);
@@ -74,48 +81,46 @@ const Login = () => {
   return (
     <div id='auth' className='vh-100'>
       <LoginNavbar />
-      <div
-        className='py-4 container col-11 col-md-6 col-lg-4 mx-md-auto pt-5'>
-          <form 
-        onSubmit={handleSubmit}>
-        <p className='text-center mt-5 mb-3'>Log in using your email.</p>
-        {error && (
-          <div>
-            <p
-              className='m-0 text-center text-danger py-2 rounded'
-              style={{ background: '#FFB6C1' }}>
-              {error}
-            </p>
+      <div className='py-4 container col-11 col-md-6 col-lg-4 mx-md-auto pt-5'>
+        <form onSubmit={handleSubmit}>
+          <p className='text-center mt-5 mb-3'>Log in using your email.</p>
+          {error && (
+            <div>
+              <p
+                className='m-0 text-center text-danger py-2 rounded'
+                style={{ background: '#FFB6C1' }}>
+                {error}
+              </p>
+            </div>
+          )}
+          <div id='form' className='d-flex justify-content-center'>
+            <img src={email} alt='' />
+            <input
+              value={email}
+              onChange={(e) => setemail(e.target.value)}
+              className='ms-3'
+              type='text'
+              placeholder='Email'
+            />
           </div>
-        )}
-        <div id='form' className='d-flex justify-content-center'>
-          <img src={email} alt='' />
-          <input
-            value={email}
-            onChange={(e) => setemail(e.target.value)}
-            className='ms-3'
-            type='text'
-            placeholder='Email'
-          />
-        </div>
-        <div id='form' className='d-flex justify-content-center'>
-          <img src={email} alt='' />
-          <input
-            value={password}
-            onChange={(e) => setpassword(e.target.value)}
-            className='ms-3'
-            type='password'
-            placeholder='Password'
-          />
-        </div>
+          <div id='form' className='d-flex justify-content-center'>
+            <img src={email} alt='' />
+            <input
+              value={password}
+              onChange={(e) => setpassword(e.target.value)}
+              className='ms-3'
+              type='password'
+              placeholder='Password'
+            />
+          </div>
 
-        <div className='text-center'>
-          <button
-            type='submit'
-            className='continue mt-4 border px-5 py-3 rounded-pill bgPr text-white'>
-            CONTINUE
-          </button>
-        </div>
+          <div className='text-center'>
+            <button
+              type='submit'
+              className='continue mt-4 border px-5 py-3 rounded-pill bgPr text-white hover_down'>
+              CONTINUE
+            </button>
+          </div>
         </form>
         {/* Google */}
         <button
@@ -126,7 +131,7 @@ const Login = () => {
           <p className='mb-0'>Continue with Google</p>
         </button>
         {/* Facebook */}
-        <button 
+        <button
           onClick={facebookSignin}
           className='d-flex bg-primary justify-content-center w-100 py-3 rounded border-0 mt-4 my-auto'
           style={{ boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)' }}>

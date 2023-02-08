@@ -6,7 +6,7 @@ import { useuserAuth } from '../context/UserAuth';
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { user }: any = useuserAuth();
+  const { token }: any = useuserAuth();
 
   return (
     <div className='w-100 py-3 bg-light'>
@@ -17,12 +17,12 @@ const Navbar = () => {
           </Link>
         </div>
         <div className='d-flex gap-2 gap-md-4 justify-content-between'>
-          {!user && (
+          {!token && (
             <Link to='/login'>
               <button className='login'>Log In</button>
             </Link>
           )}
-          {user ? (
+          {token ? (
             <Link to='/timeline'>
               <button className='get-start'>VIEW TIMELINE</button>
             </Link>

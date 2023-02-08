@@ -34,6 +34,7 @@
     "react-redux": "^8.0.4",
     "react-router-dom": "^6.4.2",
     "sass": "^1.53.0",
+    "uuid": "^9.0.0",
     "vertical-timeline-component-react": "^4.2.1"
   },
   "devDependencies": {

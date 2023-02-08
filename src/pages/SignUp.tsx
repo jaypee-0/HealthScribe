@@ -10,27 +10,30 @@ import { Link } from 'react-router-dom';
 import { useuserAuth } from '../context/UserAuth';
 import { useNavigate } from 'react-router-dom';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { auth } from '../components/Firebase';
+import { addDoc, collection, doc, orderBy, query } from "firebase/firestore";
+import { auth, db } from '../components/Firebase';
 
 const SignUp = () => {
   const { signUp, setuser }:any = useuserAuth();
   const navigate = useNavigate();
-
   const [email, setemail] = React.useState("")
   const [password, setpassword] = React.useState("")
   const [error, seterror] = React.useState("")
   const [emailExists, setEmailExists] = React.useState(false);
+
+  const usersRef = collection(db, "users");
 
   const handleSubmit = async (e:React.SyntheticEvent) => {
     e.preventDefault();
     seterror("")
       await signUp(email, password)
       .then(async (user: any) => {
+        console.log(user)
         if (user) {
             const token = await user.user.getIdToken();
             navigate('/login')
         }
-        //addDoc(usersRef, { uid: user.user.uid, email, fullname: nameInd, role });
+        addDoc(usersRef, { uid: user.user.uid, email: email });
     })
     .catch((error:any) => {
         if (error.code === "auth/email-already-in-use") {
@@ -71,6 +74,9 @@ const SignUp = () => {
         </div>
         {emailExists &&
         <div><p className='m-0 text-center text-danger py-2 rounded' style={{background: '#FFB6C1'}}>{"Email already in use"}</p></div>
+        }
+        {error &&
+        <div><p className='m-0 text-center text-danger py-2 rounded' style={{background: '#FFB6C1'}}>{"Invalid Email"}</p></div>
         }
         <div id='form' className='d-flex justify-content-center'>
           <img src={email} alt='' />

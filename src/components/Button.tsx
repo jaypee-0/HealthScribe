@@ -6,7 +6,7 @@ interface Button {
   url: String | any,
   bg: Boolean | String,
   color: Boolean | String,
-  border: Boolean | String
+  border: Boolean | String,
 }
 
 const Button = ({ title, url, bg, color, border }: Button) => {

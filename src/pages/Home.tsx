@@ -12,7 +12,7 @@ import { useuserAuth } from '../context/UserAuth';
 
 const Home = () => {
   const width = screen.width
-  const { user }: any = useuserAuth();
+  const { token }: any = useuserAuth();
 
   return (
     <>
@@ -28,7 +28,7 @@ const Home = () => {
               Keep track of your health related symptoms on all of your devices. Click <span className="fw-bold">Learn More</span> to see how HealthScribe works.
             </p>
             <div className='d-flex gap-5 mt-5 justify-content-center'>
-              {!user&&
+              {!token&&
               <Button title={'CREATE ACCOUNT'} url={'/signup'} bg color={true} border={false} />
               }
               <div className="view">
