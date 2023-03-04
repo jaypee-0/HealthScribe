@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import { useuserAuth } from '../context/UserAuth';
 import { useNavigate } from 'react-router-dom';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { addDoc, collection, doc, orderBy, query } from "firebase/firestore";
+import { addDoc, collection, doc, orderBy, query, serverTimestamp, setDoc } from "firebase/firestore";
 import { auth, db } from '../components/Firebase';
 
 const SignUp = () => {
@@ -21,19 +21,23 @@ const SignUp = () => {
   const [error, seterror] = React.useState("")
   const [emailExists, setEmailExists] = React.useState(false);
 
-  const usersRef = collection(db, "users");
-
+  
   const handleSubmit = async (e:React.SyntheticEvent) => {
     e.preventDefault();
     seterror("")
-      await signUp(email, password)
-      .then(async (user: any) => {
-        console.log(user)
-        if (user) {
+    await signUp(email, password)
+    .then(async (user: any) => {
+      console.log(user)
+      if (user) {
+          const usersRef = doc(db, "users", user.user.uid);
+            setDoc(doc(db, 'events', user.user.uid), {
+              uid: user.user.uid,
+              timestamp: serverTimestamp(),
+            })
+            setDoc(usersRef, { uid: user.user.uid, email: email, password: password });
             const token = await user.user.getIdToken();
             navigate('/login')
         }
-        addDoc(usersRef, { uid: user.user.uid, email: email });
     })
     .catch((error:any) => {
         if (error.code === "auth/email-already-in-use") {

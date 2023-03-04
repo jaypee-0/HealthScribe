@@ -11,6 +11,7 @@ import {
   doc,
   serverTimestamp,
   setDoc,
+  updateDoc,
 } from 'firebase/firestore';
 import { db, storage } from '../components/Firebase';
 import { ref } from 'firebase/storage';
@@ -22,7 +23,7 @@ const Profile = () => {
   const navigate = useNavigate();
   const [startDate, setStartDate] = React.useState(new Date());
   const [fullname, setfullname] = React.useState(
-    userDetails.fullname ? userDetails.fullname : ''
+    user.displayName ? user.displayName : ''
   );
   const [email, setemail] = React.useState(user.displayName ? user.email : '');
   const [image, setImage] = React.useState({ preview: '', raw: '' });
@@ -49,8 +50,7 @@ const Profile = () => {
       fullName: fullname,
       dob: startDate,
     })
-    await setDoc(doc(db, 'users', userDetails?.id), {
-      id: userDetails.id,
+    await updateDoc(doc(db, 'users', userDetails?.id), {
       fullName: fullname,
       dateOfBirth: startDate,
       timestamp: serverTimestamp(),
@@ -76,7 +76,7 @@ const Profile = () => {
               src={
                 image.preview
                   ? image.preview
-                  : userDetails.uri
+                  : user
                   ? `${user.photoURL}`
                   : profile
               }

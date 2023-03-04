@@ -49,6 +49,7 @@ const Login = () => {
     signInWithGoogle([''], { prompt: 'select_account' })
       .then((user: any) => {
         const token = user.user.getIdToken();
+        
         setuserDetails({id: user.user.uid})
         localStorage.setItem("HealthScribe_Token", token)
         setuserDetails({id: user.user.uid})

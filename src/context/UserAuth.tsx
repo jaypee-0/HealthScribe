@@ -46,6 +46,7 @@ export function UserAuthProvider({ children }: any) {
         console.log(e, 'SymptomsRef Error');
       });
   }, []);
+
   React.useEffect(() => {
     getDocs(causesRef)
       .then((snapshot: any) => {
@@ -66,6 +67,7 @@ export function UserAuthProvider({ children }: any) {
       unsubscribe();
     };
   }, []);
+  
   React.useEffect(()=> {
     if (localStorage.getItem("HealthScribe_Token")) {
       settoken(localStorage.getItem("HealthScribe_Token"))
