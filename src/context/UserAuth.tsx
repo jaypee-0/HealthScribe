@@ -16,9 +16,9 @@ export function UserAuthProvider({ children }: any) {
   const [token, settoken] = React.useState<any>(null);
   const [userDetails, setuserDetails] = React.useState<any>({
     id: '',
-    uri: '',
+    pic: '',
     email: '',
-    fullname: '',
+    fullName: '',
     dob: ""
   });
   let symptoms: {}[] = [];
@@ -31,10 +31,6 @@ export function UserAuthProvider({ children }: any) {
     return signInWithEmailAndPassword(auth, email, password);
   }
 
-  function addCause (e:React.SyntheticEvent) {
-    e.preventDefault()
-    
-  }
   React.useEffect(() => {
     getDocs(symRef)
       .then((snapshot: any) => {
@@ -59,21 +55,32 @@ export function UserAuthProvider({ children }: any) {
       });
   }, []);
 
-  React.useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser: any) => {
-      setuser(currentUser);
-    });
-    return () => {
-      unsubscribe();
-    };
-  }, []);
+  // React.useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (currentUser: any) => {
+  //     setuser(currentUser);
+  //   });
+  //   return () => {
+  //     unsubscribe();
+  //   };
+  // }, []);
   
   React.useEffect(()=> {
     if (localStorage.getItem("HealthScribe_Token")) {
       settoken(localStorage.getItem("HealthScribe_Token"))
     }
   }, [])
-
+  
+  React.useEffect(()=> {
+    if (localStorage.getItem("HealthScribe_ID")) {
+      setuserDetails({id: localStorage.getItem("HealthScribe_ID")})
+    }
+  }, [])
+  
+  React.useEffect(()=> {
+    if (localStorage.getItem("HealthScribe_User")) {
+      setuser(localStorage.getItem("HealthScribe_User"))
+    }
+  }, [])
 
   const value = {
     //Auth

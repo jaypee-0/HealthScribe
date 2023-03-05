@@ -19,7 +19,7 @@ const Success = () => {
       </nav>
         <div className="text-center mt-5">
           <img src={success} height={150} width={150} alt="" />
-          <p className="mt-5">Your profile has been created.</p>
+          <p className="mt-5">Your profile has been updated.</p>
           <Button title={'CONTINUE'} url={'/timeline'} bg={false} color={false} border={true} />
         </div>
     </div>

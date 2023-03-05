@@ -10,7 +10,8 @@ import {
   useSignInWithGoogle,
   useSignInWithFacebook,
 } from 'react-firebase-hooks/auth';
-import { auth } from '../components/Firebase';
+import { auth, db } from '../components/Firebase';
+import { collection, onSnapshot, query, where } from 'firebase/firestore';
 
 const Login = () => {
   const { logIn, setuser, setuserDetails }: any = useuserAuth();
@@ -30,10 +31,20 @@ const Login = () => {
         console.log(user);
         if (user) {
           const token = await user.user.getIdToken();
+          const id = await user.user.uid;
           setuserDetails({id: user.user.uid})
           localStorage.setItem("HealthScribe_Token", token)
-          setuser(user.user);
-          navigate('/profile');
+          localStorage.setItem("HealthScribe_ID", id)
+          
+          const docRef = collection(db, "users");
+          const q = query(docRef, where("uid", "==", id));
+          onSnapshot(q, (snapshot) => {
+            snapshot.docs.forEach((item: any) => {
+              setuser(item.data());
+              localStorage.setItem("HealthScribe_User", item.data())
+              navigate('/profile');
+            });
+          });
         }
       });
     } catch (err: any) {
@@ -49,10 +60,8 @@ const Login = () => {
     signInWithGoogle([''], { prompt: 'select_account' })
       .then((user: any) => {
         const token = user.user.getIdToken();
-        
         setuserDetails({id: user.user.uid})
         localStorage.setItem("HealthScribe_Token", token)
-        setuserDetails({id: user.user.uid})
         navigate('/profile');
         setuser(user.user);
       })

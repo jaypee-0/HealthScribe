@@ -22,7 +22,7 @@ import { purple } from "@mui/material/colors";
 import { useuserAuth } from "../context/UserAuth";
 import "../styles/Timeline.scss";
 import swal from "sweetalert";
-import { addDoc, collection, doc, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
+import { addDoc, collection, doc, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "../components/Firebase";
 
 const symptomValues = {
@@ -33,8 +33,7 @@ const symptomValues = {
     date: ""
 };
 const Timeline = () => {
-    const { symptoms, causes, user, userDetails }: any = useuserAuth();
-    console.log(causes);
+    const { userDetails }: any = useuserAuth();
 
     const history = useNavigate();
     const theme = createTheme({
@@ -274,7 +273,7 @@ const Timeline = () => {
                     });
             } else alert("details are missing");
         }
-        
+
         const drinkcheck = !drinkinput || !adddrink1 || !adddrinkdate || !adddrinkcomments;
         if (showDrink) {
             if (!drinkcheck) {
