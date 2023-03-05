@@ -97,13 +97,13 @@ const SignUp = () => {
         </div>
         </form>
         {/* Google */}
-        <button
+        {/* <button
           onClick={googleSignin}
           className='d-flex justify-content-center w-100 py-3 rounded border mt-4 my-auto'
           style={{ boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)' }}>
           <img className='me-3' src={google} alt='' />
           <p className='mb-0'>Continue with Google</p>
-        </button>
+        </button> */}
         {/* Facebook */}
         {/* <button
           className='d-flex bg-primary justify-content-center w-100 py-3 rounded border-0 mt-4 my-auto'
@@ -111,7 +111,7 @@ const SignUp = () => {
           <img className='me-3' src={facebook} alt='' />
           <p className='mb-0 text-white'>Continue with Facebook</p>
         </button> */}
-        <p className='text-center text-Org mt-5'>Already have an account?</p>
+        <p className='text-center text-Org mt-5' onClick={()=>navigate('/login')}>Already have an account?</p>
       </div>
     </div>
   );
