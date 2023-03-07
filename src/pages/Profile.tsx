@@ -36,6 +36,7 @@ const Profile = () => {
 
     const handleSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault();
+        navigate("/success");           
         setuserDetails({
             ...userDetails,
             email: email,
@@ -48,7 +49,6 @@ const Profile = () => {
             pic: "",
             timestamp: serverTimestamp()
         })
-        navigate("/success");           
     };
     React.useEffect(() => {
         setTimeout(() => {
