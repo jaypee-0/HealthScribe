@@ -13,7 +13,6 @@ import { ref } from "firebase/storage";
 
 const Profile = () => {
     const { user, userDetails, setuserDetails }: any = useuserAuth();
-    console.log(user);
     const navigate = useNavigate();
     const [loading, setloading] = React.useState(false);
     const [startDate, setStartDate] = React.useState(new Date());
@@ -49,12 +48,7 @@ const Profile = () => {
             pic: "",
             timestamp: serverTimestamp()
         })
-            .then((res: any) => {
-                navigate("/success");
-            })
-            .catch((e) => {
-                console.log(e);
-            });
+        navigate("/success");           
     };
     React.useEffect(() => {
         setTimeout(() => {
